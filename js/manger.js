@@ -80,7 +80,7 @@
       '<div class="filters" role="group" aria-label="Type de cuisine">' + chips + '</div>' +
       '<div class="filter-row">' +
         '<div class="seg" role="group" aria-label="Budget"><span>Budget</span>' +
-          '<button type="button" data-price="0" aria-pressed="true">Tous</button><button type="button" data-price="1" aria-pressed="false">€</button><button type="button" data-price="2" aria-pressed="false">€€ max</button></div>' +
+          '<button type="button" data-price="0" aria-pressed="true">Tous</button><button type="button" data-price="1" aria-pressed="false">€</button><button type="button" data-price="2" aria-pressed="false">€€</button><button type="button" data-price="3" aria-pressed="false">€€€</button></div>' +
         '<div class="seg" role="group" aria-label="Trier"><span>Trier</span>' +
           '<button type="button" data-sort="name" aria-pressed="true">A → Z</button><button type="button" data-sort="dist" aria-pressed="false">Plus près du campus</button></div>' +
       '</div>' +
@@ -97,7 +97,7 @@
   }
   function renderResto() {
     var items = D.restaurants.filter(function (r) {
-      return (state.cat === 'all' || r.cat.indexOf(state.cat) >= 0) && (!state.price || r.price <= state.price);
+      return (state.cat === 'all' || r.cat.indexOf(state.cat) >= 0) && (!state.price || r.price === state.price);
     });
     items.sort(state.sort === 'dist' ? function (a, b) { return km(D.campus, a) - km(D.campus, b); } : function (a, b) { return a.name.localeCompare(b.name, 'fr'); });
     var box = restoRoot.querySelector('#resto-list');
