@@ -39,12 +39,17 @@ a{color:var(--pine);text-underline-offset:3px}
 .flag{width:22px;height:22px;background:var(--red);position:relative;border-radius:4px;flex:none}
 .flag::before,.flag::after{content:"";position:absolute;background:#fff}
 .flag::before{left:9px;top:3px;width:4px;height:16px}.flag::after{left:3px;top:9px;width:16px;height:4px}
-.menu{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0;margin-left:auto;padding:3px}
+.top .inner{flex-wrap:wrap;row-gap:10px}
+.menu{display:flex;flex-wrap:wrap;gap:6px;min-width:0;flex-basis:100%;padding:3px 0}
 .menu::-webkit-scrollbar{display:none}
 .menu a{font-family:var(--f-head);font-weight:500;font-size:14.5px;color:var(--ink);text-decoration:none;padding:6px 13px;border:1.5px solid var(--ink);border-radius:999px;white-space:nowrap;transition:background .15s}
 .menu a:hover{background:var(--butter)}
 .menu a[aria-current="page"]{background:var(--ink);color:var(--paper)}
-@media (max-width:760px){.top .inner{flex-wrap:wrap;gap:10px}.menu{margin-left:0;width:100%}}
+@media (max-width:760px){
+  .top .inner{gap:10px}
+  .menu{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:3px 28px 3px 0;
+    -webkit-mask-image:linear-gradient(to right,#000 85%,transparent);mask-image:linear-gradient(to right,#000 85%,transparent)}
+}
 
 /* pages */
 .page{padding-block:36px 64px}
@@ -81,7 +86,7 @@ p{margin:0 0 12px}
 .subnav button{font:500 14.5px var(--f-head);color:var(--ink);background:var(--card);border:1.5px solid var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer}
 .subnav button:hover{background:var(--butter)}
 .sections{display:grid;gap:16px}
-.sec{background:var(--card);border:1.5px solid var(--ink);border-radius:16px;padding:20px 22px;scroll-margin-top:120px}
+.sec{background:var(--card);border:1.5px solid var(--ink);border-radius:16px;padding:20px 22px;scroll-margin-top:150px}
 .sec h2{margin-bottom:8px}
 .placeholder{border:1.5px dashed #b9ad99;border-radius:12px;padding:14px 16px;color:var(--soft);font-style:italic;font-size:15px;background:var(--paper)}
 .placeholder p{margin:0}
@@ -274,11 +279,11 @@ var TOPICS = [
     menu.appendChild(el('a',{href:'#'+t.id}, t.title));
 
     var card = el('a',{class:'topic',href:'#'+t.id});
-    card.innerHTML = '<small>Thème '+(i+1)+'</small><strong>'+t.title+'</strong><span>'+t.desc+'</span><em>Ouvrir →</em>';
+    card.innerHTML = '<strong>'+t.title+'</strong><span>'+t.desc+'</span><em>Ouvrir →</em>';
     grid.appendChild(card);
 
     var page = el('section',{class:'page','data-page':t.id, hidden:''});
-    var head = el('div',{class:'chap-head'},'<div class="kicker">Thème '+(i+1)+'</div><h1><mark>'+t.hl+'</mark></h1><p class="lede">'+t.desc+'</p>');
+    var head = el('div',{class:'chap-head'},'<h1><mark>'+t.hl+'</mark></h1><p class="lede">'+t.desc+'</p>');
     var sub = el('div',{class:'subnav',role:'navigation','aria-label':'Sous-thèmes'});
     var secs = el('div',{class:'sections'});
     var bodies = {};
