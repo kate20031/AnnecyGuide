@@ -163,7 +163,9 @@
     dlg.querySelector('.dlg-addr').textContent = p.address;
     var foot = dlg.querySelector('.dlg-dist');
     var near = d < 0.35;
-    foot.innerHTML = near
+    foot.innerHTML = d < 0.03
+      ? '<b>C’est le point de départ</b> : toutes les distances du guide sont mesurées depuis ici, au cœur du campus.'
+      : near
       ? '<b>Sur le campus</b> · à ' + fmtDist(d) + ' du restaurant universitaire'
       : '<b>' + fmtDist(d) + '</b> à vol d’oiseau du campus USMB · environ <b>' + walkMin(d) + ' min à pied</b>' + (d > 2.5 ? ', le bus ou le vélo sont plus rapides' : '');
     var o = D.campus.lat + ',' + D.campus.lon, t = p.lat + ',' + p.lon;
