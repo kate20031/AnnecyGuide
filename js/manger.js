@@ -16,6 +16,13 @@
   function euros(n) { return n ? '<span class="price" aria-label="Prix ' + n + ' sur 3">' + '€€€'.slice(0, n) + '<span class="price-off">' + '€€€'.slice(n) + '</span></span>' : ''; }
   function distChip(p) { var d = km(D.campus, p); return '<span class="dist">' + fmtDist(d) + ' du campus</span>'; }
   function mapBtn(p, kind) { return '<button type="button" class="map-btn" data-kind="' + kind + '" data-id="' + esc(p.id) + '">Voir sur la carte</button>'; }
+  /* Lien vers la fiche Google Maps du lieu (photos, avis, horaires). « gmaps » dans les données permet de forcer la recherche. */
+  function gmapsUrl(p) {
+    var q = p.gmaps || (p.name + ', ' + String(p.address || '').split(/ · |\(/)[0] + (/annecy|seynod/i.test(p.address || '') ? '' : ', Annecy'));
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+  }
+  function photoLink(p) { return '<a class="gphotos" href="' + gmapsUrl(p) + '" target="_blank" rel="noopener">Photos sur Google Maps</a>'; }
+  function actions(p, kind) { return '<div class="actions">' + photoLink(p) + mapBtn(p, kind) + '</div>'; }
   function list(items) { return items && items.length ? '<ul class="clean">' + items.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>' : ''; }
   function dishes(items, label) { return items && items.length ? '<p class="dish-label">' + (label || 'À goûter') + '</p><div class="dishes">' + items.map(function (i) { return '<span>' + esc(i) + '</span>'; }).join('') + '</div>' : ''; }
 
@@ -54,7 +61,7 @@
     var places = D.crous.map(function (p) {
       return '<article class="place' + (p.main ? ' main' : '') + '" id="crous-' + p.id + '">' +
         '<div class="place-head"><div><div class="tags"><span class="tag pine">' + esc(p.kind) + '</span>' + (p.main ? '<span class="tag">Le principal</span>' : '') + '</div>' +
-        '<h4>' + esc(p.name) + '</h4><p class="meta">' + esc(p.address) + '</p></div>' + mapBtn(p, 'crous') + '</div>' +
+        '<h4>' + esc(p.name) + '</h4><p class="meta">' + esc(p.address) + '</p></div>' + actions(p, 'crous') + '</div>' +
         '<dl class="facts"><div><dt>Horaires</dt><dd>' + esc(p.hours) + '</dd></div><div><dt>Paiement</dt><dd>' + esc(p.pay) + '</dd></div>' +
         (p.access ? '<div><dt>Accès</dt><dd>' + esc(p.access) + '</dd></div>' : '') +
         (p.phone ? '<div><dt>Téléphone</dt><dd>' + esc(p.phone) + '</dd></div>' : '') + '</dl>' +
@@ -95,7 +102,7 @@
       '<h4>' + esc(r.name) + '</h4><p class="meta">' + esc(r.area) + ' · ' + esc(r.address) + '</p>' +
       '<p class="price-line">' + euros(r.price) + ' <span>' + esc(r.priceText) + '</span></p>' +
       dishes(r.dishes) + (r.note ? '<p class="note-line">' + esc(r.note) + '</p>' : '') +
-      '<div class="place-foot">' + distChip(r) + mapBtn(r, 'resto') + '</div>' + photosBlock(r) + '</article>';
+      '<div class="place-foot">' + distChip(r) + actions(r, 'resto') + '</div>' + photosBlock(r) + '</article>';
   }
   function renderResto() {
     var items = D.restaurants.filter(function (r) {
@@ -116,7 +123,7 @@
           '<p class="price-line"><span>' + esc(c.priceText) + '</span></p>' +
           (c.hours ? '<p class="hours">' + esc(c.hours) + '</p>' : '') +
           dishes(c.dishes) + (c.note ? '<p class="note-line">' + esc(c.note) + '</p>' : '') +
-          '<div class="place-foot">' + distChip(c) + mapBtn(c, 'coffee') + '</div>' + photosBlock(c) + '</article>';
+          '<div class="place-foot">' + distChip(c) + actions(c, 'coffee') + '</div>' + photosBlock(c) + '</article>';
       }).join('') + '</div>';
   }
 
@@ -132,7 +139,7 @@
       '<h4>' + esc(m.name) + '</h4><p class="meta">' + esc(m.address) + '</p>' +
       '<p class="price-line">' + euros(m.price) + ' <span>' + ['', 'petits prix', 'prix moyens', 'plus cher'][m.price] + '</span></p>' +
       '<p class="hours">' + esc(m.hours) + '</p><p class="note-line">' + esc(m.info) + '</p>' +
-      '<div class="place-foot">' + distChip(m) + mapBtn(m, 'market') + '</div></article>';
+      '<div class="place-foot">' + distChip(m) + actions(m, 'market') + '</div></article>';
   }
   function marketHTML() {
     var near = D.supermarkets.filter(function (m) { return m.group === 'campus'; });
@@ -171,6 +178,7 @@
     var o = D.campus.lat + ',' + D.campus.lon, t = p.lat + ',' + p.lon;
     dlg.querySelector('.dlg-walk').href = 'https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route=' + o + '%3B' + t;
     dlg.querySelector('.dlg-transit').href = 'https://www.google.com/maps/dir/?api=1&origin=' + o + '&destination=' + t + '&travelmode=transit';
+    dlg.querySelector('.dlg-photos').href = gmapsUrl(p);
     dlg.querySelector('.dlg-open').href = 'https://www.openstreetmap.org/?mlat=' + p.lat + '&mlon=' + p.lon + '#map=17/' + p.lat + '/' + p.lon;
     dlg.showModal();
 

@@ -27,4 +27,6 @@ Le contenu est dans `data/manger-data.js` : lieux du Crous, restaurants (avec ca
 - Ajouter une photo d'étudiant : mets l'image dans `images/partages/`, puis ajoute-la dans `photos` du lieu, par exemple `photos: [{ src: "images/partages/ru-lasagnes.jpg", caption: "Lasagnes du jeudi", by: "Léa" }]`.
 - Le code d'affichage est dans `js/manger.js`. La carte utilise Leaflet et OpenStreetMap.
 
-Photos des supermarchés : Wikimedia Commons, sous licences libres (auteur et licence indiqués sous chaque photo).
+Chaque lieu a un bouton « Photos sur Google Maps » qui ouvre sa fiche Google Maps (photos, avis, horaires). Si le bouton tombe sur une liste au lieu du bon lieu, ajoute `gmaps: "Nom exact sur Google Maps"` au lieu dans `data/manger-data.js`.
+
+Photo « Le saviez-vous ? » : Gnrc, Wikimedia Commons, CC BY-SA 4.0.

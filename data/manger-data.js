@@ -60,6 +60,7 @@ window.MANGER = {
     {
       id: "tom-morel",
       name: "Cafétéria / RU Tom Morel",
+      gmaps: "Restaurant Universitaire Tom Morel, Annecy-le-Vieux",
       kind: "Libre-service",
       address: "Domaine universitaire, 74940 Annecy-le-Vieux",
       lat: 45.91940, lon: 6.15985,
@@ -299,14 +300,12 @@ window.MANGER = {
     { id: "intermarche", name: "Intermarché Super", group: "campus", area: "Annecy-le-Vieux",
       address: "7 place du 18 Juin 1940, 74940 Annecy-le-Vieux", lat: 45.91520, lon: 6.14523,
       price: 2, hours: "Lun–sam 8 h – 20 h · dim 9 h – 12 h 30",
-      info: "Le grand supermarché le plus proche du campus. Pratique pour les courses de la semaine en rentrant de cours.",
-      photo: { src: "images/supermarches/intermarche.jpg", credit: "Benoît Prieur", license: "CC0", url: "https://commons.wikimedia.org/wiki/File:Intermarch%C3%A9_de_Privas_-_mai_2018.JPG", generic: true } },
+      info: "Le grand supermarché le plus proche du campus. Pratique pour les courses de la semaine en rentrant de cours." },
 
-    { id: "carrefour-market", name: "Carrefour Market", group: "campus", area: "Annecy-le-Vieux",
+    { id: "carrefour-market", name: "Carrefour Market", group: "campus", area: "Annecy-le-Vieux", gmaps: "Carrefour Market Annecy le vieux",
       address: "33 rue des Mouettes, 74940 Annecy-le-Vieux", lat: 45.91054, lon: 6.14928,
       price: 2, hours: "Lun–sam 8 h – 20 h · dim 8 h 30 – 12 h 30",
-      info: "Supermarché de quartier à Annecy-le-Vieux, côté lac. Bon choix de produits de marque Carrefour, moins chers.",
-      photo: { src: "images/supermarches/carrefour-market.jpg", credit: "Benoît Prieur", license: "CC0", url: "https://commons.wikimedia.org/wiki/File:Carrefour_Market_Miribel_-_fa%C3%A7ade_principale.JPG", generic: true } },
+      info: "Supermarché de quartier à Annecy-le-Vieux, côté lac. Bon choix de produits de marque Carrefour, moins chers." },
 
     { id: "petit-casino", name: "Le Petit Casino", group: "campus", area: "Annecy-le-Vieux",
       address: "11 rue de Lachat, 74940 Annecy-le-Vieux", lat: 45.92183, lon: 6.14537,
@@ -316,10 +315,9 @@ window.MANGER = {
     { id: "lidl", name: "Lidl", group: "ville", area: "Annecy sud",
       address: "2 rue de Sansy, 74000 Annecy", lat: 45.88870, lon: 6.11475,
       price: 1, hours: "Lun–sam 8 h 30 – 19 h 30 · dim 8 h 30 – 12 h 15",
-      info: "Le discount : souvent le panier le moins cher. Bonne boulangerie en libre-service et promos chaque semaine.",
-      photo: { src: "images/supermarches/lidl.jpg", credit: "Guilhem Vellut", license: "CC BY 2.0", url: "https://commons.wikimedia.org/wiki/File:LiDL_@_Sevrier_(51188094924).jpg", caption: "Le Lidl de Sevrier, au bord du lac" } },
+      info: "Le discount : souvent le panier le moins cher. Bonne boulangerie en libre-service et promos chaque semaine." },
 
-    { id: "carrefour", name: "Carrefour (hypermarché)", group: "ville", area: "Annecy nord",
+    { id: "carrefour", name: "Carrefour (hypermarché)", group: "ville", area: "Annecy nord", gmaps: "Carrefour Annecy, 134 avenue de Genève, 74000 Annecy",
       address: "134 avenue de Genève, 74000 Annecy", lat: 45.92484, lon: 6.12462,
       price: 2, hours: "Lun–ven 8 h 30 – 21 h 30 · sam 8 h 30 – 21 h · dim 8 h 30 – 12 h 15",
       info: "Le plus grand choix de la ville : alimentation, maison, électronique. Ouvert tard en semaine." },
@@ -327,25 +325,21 @@ window.MANGER = {
     { id: "grand-frais", name: "Grand Frais", group: "ville", area: "Seynod",
       address: "Avenue Henri Zanaroli, 74600 Seynod", lat: 45.89044, lon: 6.11363,
       price: 2, hours: "Lun–sam 8 h 30 – 20 h · dim 9 h – 12 h 30",
-      info: "Spécialiste des produits frais : fruits et légumes, boucherie, fromagerie, poissonnerie et une grande épicerie du monde. Idéal pour cuisiner les plats de chez toi.",
-      photo: { src: "images/supermarches/grand-frais.jpg", credit: "Benoît Prieur", license: "CC0", url: "https://commons.wikimedia.org/wiki/File:Vue_du_magasin_Grand_Frais_(Beynost)_janvier_2023.JPG", generic: true } },
+      info: "Spécialiste des produits frais : fruits et légumes, boucherie, fromagerie, poissonnerie et une grande épicerie du monde. Idéal pour cuisiner les plats de chez toi." },
 
     { id: "monoprix", name: "Monoprix", group: "ville", area: "Vieille ville",
       address: "15 rue Notre-Dame, 74000 Annecy", lat: 45.90021, lon: 6.12637,
       price: 3, hours: "Lun–sam 8 h 30 – 20 h 30 · dim 9 h – 20 h",
-      info: "En plein centre et ouvert le dimanche toute la journée. Plus cher, mais très pratique.",
-      photo: { src: "images/supermarches/monoprix.jpg", credit: "Andy Li", license: "CC0", url: "https://commons.wikimedia.org/wiki/File:Monoprix,_Caen_2025-03-29.jpg", generic: true } },
+      info: "En plein centre et ouvert le dimanche toute la journée. Plus cher, mais très pratique." },
 
     { id: "carrefour-city", name: "Carrefour City", group: "ville", area: "Plusieurs adresses",
       address: "5 place des Rhododendrons, Annecy (et 14 av. de Chambéry, 27 av. du Parc des Sports…)", lat: 45.91877, lon: 6.12890,
       price: 3, hours: "Lun–sam 7 h – 21 h · dim matin",
-      info: "Supérettes ouvertes tôt et tard, un peu partout en ville. Plus cher que les grandes surfaces.",
-      photo: { src: "images/supermarches/carrefour-city.jpg", credit: "Swaf75", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Fa%C3%A7ade_Carrefour_City.jpg", generic: true } },
+      info: "Supérettes ouvertes tôt et tard, un peu partout en ville. Plus cher que les grandes surfaces." },
 
     { id: "biocoop", name: "Biocoop", group: "ville", area: "Centre",
       address: "10 rue de la Paix, 74000 Annecy", lat: 45.90341, lon: 6.12685,
       price: 3, hours: "Lun–sam 9 h – 19 h 30",
-      info: "100 % bio, avec un grand rayon vrac : tu peux venir avec tes bocaux et acheter juste la quantité dont tu as besoin.",
-      photo: { src: "images/supermarches/biocoop.jpg", credit: "Tabl-trai", license: "CC BY-SA 4.0", url: "https://commons.wikimedia.org/wiki/File:Biocoop_La_Belle_Rive_(Bellerive-sur-Allier)_2022-05-22.JPG", generic: true } }
+      info: "100 % bio, avec un grand rayon vrac : tu peux venir avec tes bocaux et acheter juste la quantité dont tu as besoin." }
   ]
 };
