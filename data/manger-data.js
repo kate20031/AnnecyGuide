@@ -9,7 +9,6 @@
      area     quartier (« Annecy-le-Vieux », « Vieille ville », « Centre »…)
      price    1 = €, 2 = €€, 3 = €€€
      priceText fourchette indicative, ex. « ≈ 12–18 € »
-     photos   photos des étudiants : [{ src: "images/partages/xxx.jpg", caption: "…", by: "Prénom" }]
 
    Les prix sont des ordres de grandeur relevés en novembre 2026
    (offices de tourisme, guides, avis). Ils changent : vérifie sur place.
@@ -39,8 +38,7 @@ window.MANGER = {
       ],
       tip: "Envie de pâtes ? Prends la file de gauche et prévois quand même un peu d'attente aux heures de pointe.",
       figure: { src: "images/crous/repas-1-euro.jpg", alt: "Trois exemples de plateaux au restaurant universitaire avec leur nombre de points", caption: "À quoi ressemble un repas à 1 € ? Trois plateaux du Restaurant universitaire d'Annecy (Crous Grenoble Alpes), avec leurs points." },
-      link: "https://www.crous-grenoble.fr/restaurant/ru-dannecy/",
-      photos: []
+      link: "https://www.crous-grenoble.fr/restaurant/ru-dannecy/"
     },
     {
       id: "polytech",
@@ -54,8 +52,7 @@ window.MANGER = {
         "Dans l'école d'ingénieurs de l'USMB, à 50 m du restaurant universitaire.",
         "Pratique si tu as cours à côté ou si la file du RU est trop longue."
       ],
-      link: "https://www.crous-grenoble.fr/restaurant/cafeteria-polytech-annecy/",
-      photos: []
+      link: "https://www.crous-grenoble.fr/restaurant/cafeteria-polytech-annecy/"
     },
     {
       id: "tom-morel",
@@ -71,8 +68,7 @@ window.MANGER = {
         "Un libre-service à côté de la résidence Crous Tom Morel, à environ 230 m du RU.",
         "Bonne solution pour manger vite à midi quand on habite la résidence."
       ],
-      link: "https://www.crous-grenoble.fr/restaurant/ru-tom-morel/",
-      photos: []
+      link: "https://www.crous-grenoble.fr/restaurant/ru-tom-morel/"
     },
     {
       id: "iut",
@@ -87,8 +83,7 @@ window.MANGER = {
         "Sandwichs, pasta box et snacks.",
         "La formule : un sandwich, deux snacks (yaourt, barre de céréales…) et un café. Tous les sandwichs ne sont pas inclus : demande à la caisse."
       ],
-      link: "https://www.crous-grenoble.fr/restaurant/cafeteria-iut-dannecy/",
-      photos: []
+      link: "https://www.crous-grenoble.fr/restaurant/cafeteria-iut-dannecy/"
     }
   ],
 
@@ -114,133 +109,133 @@ window.MANGER = {
       address: "12 rue Sainte-Claire, Annecy", lat: 45.89854, lon: 6.12492,
       price: 2, priceText: "≈ 22–30 € · plat du jour 11–15 €",
       dishes: ["Raclette", "Fondue", "Tartiflette", "Brisgotte"],
-      note: "L'adresse fromage la plus citée de la vieille ville. Réserve le soir.", photos: [] },
+      note: "L'adresse fromage la plus citée de la vieille ville. Réserve le soir." },
 
     { id: "lilas", name: "Le Lilas Rose", cat: ["savoyard", "pizza"], area: "Vieille ville",
       address: "1 passage de l'Évêché, Annecy", lat: 45.89871, lon: 6.12483,
       price: 2, priceText: "≈ 20–30 €",
       dishes: ["Spécialités savoyardes", "Pizzas"],
-      note: "Bon rapport qualité-prix d'après les avis, en plein centre historique.", photos: [] },
+      note: "Bon rapport qualité-prix d'après les avis, en plein centre historique." },
 
     { id: "heure-tourne", name: "L'Heure Tourne", cat: ["burger"], area: "Centre",
       address: "21 rue du Président Favre, Annecy", lat: 45.90337, lon: 6.12577,
       price: 2, priceText: "≈ 15–22 €",
       dishes: ["Burgers maison", "Frites"],
-      note: "Souvent cité comme le meilleur burger d'Annecy.", photos: [] },
+      note: "Souvent cité comme le meilleur burger d'Annecy." },
 
     { id: "roster", name: "The Roster", cat: ["burger"], area: "Annecy-le-Vieux",
       address: "Annecy-le-Vieux · aussi au 2 rue Joseph Blanc, Annecy", lat: 45.91597, lon: 6.14720,
       price: 2, priceText: "≈ 15–20 €",
       dishes: ["Burger Lunatic", "Burger Patriot", "Frites maison"],
-      note: "Viande fraîche et frites maison. L'adresse d'Annecy-le-Vieux est proche du campus.", photos: [] },
+      note: "Viande fraîche et frites maison. L'adresse d'Annecy-le-Vieux est proche du campus." },
 
     { id: "bora-bora", name: "Bora Bora", cat: ["burger"], area: "Annecy-le-Vieux",
       address: "13 avenue de Chavoires, Annecy-le-Vieux", lat: 45.90453, lon: 6.15989,
       price: 2, priceText: "≈ 15–25 €",
       dishes: ["Burgers", "Frites"],
-      note: "Ouvert en 2021, avec une terrasse. Près du lac côté Annecy-le-Vieux.", photos: [] },
+      note: "Ouvert en 2021, avec une terrasse. Près du lac côté Annecy-le-Vieux." },
 
     { id: "sapaudia", name: "Sapaudia Express", cat: ["pizza"], area: "Annecy-le-Vieux",
       address: "17 avenue de Chavoires, Annecy-le-Vieux · aussi 10 rue Vaugelas (Trattoria)", lat: 45.90407, lon: 6.15994,
       price: 1, priceText: "≈ 12–18 €",
       dishes: ["Pizzas", "Pâtes"],
-      note: "Le nom le plus cité pour la pizza à Annecy. La Trattoria est en centre-ville.", photos: [] },
+      note: "Le nom le plus cité pour la pizza à Annecy. La Trattoria est en centre-ville." },
 
     { id: "select-pizza", name: "Select'Pizza", cat: ["pizza"], area: "Novel",
       address: "Place de l'Annapurna, Annecy", lat: 45.91706, lon: 6.13370,
       price: 1, priceText: "≈ 10–15 €",
       dishes: ["Pizzas à emporter"],
-      note: "Apprécié surtout pour ses prix.", photos: [] },
+      note: "Apprécié surtout pour ses prix." },
 
     { id: "yatta", name: "Yatta ! Ramen", cat: ["asiat"], area: "Annecy-le-Vieux",
       address: "11 rue des Écoles, Annecy-le-Vieux", lat: 45.91217, lon: 6.14367,
       price: 2, priceText: "≈ 14–20 €",
       dishes: ["Ramen", "Gyozas"],
-      note: "Le ramen le plus cité d'Annecy, à 1 km du campus. Petite salle, tables serrées.", photos: [] },
+      note: "Le ramen le plus cité d'Annecy, à 1 km du campus. Petite salle, tables serrées." },
 
     { id: "minami", name: "Minami", cat: ["asiat"], area: "Vieille ville",
       address: "Faubourg Sainte-Claire, Annecy", lat: 45.89731, lon: 6.12297,
       price: 2, priceText: "≈ 20–30 €",
       dishes: ["Plats mijotés", "Bouillons", "Tempuras"],
-      note: "Cuisine japonaise traditionnelle, sans sushis. Recommandé par le guide Michelin (Bib Gourmand). Petite salle : réserve.", photos: [] },
+      note: "Cuisine japonaise traditionnelle, sans sushis. Recommandé par le guide Michelin (Bib Gourmand). Petite salle : réserve." },
 
     { id: "lyonnais", name: "Auberge du Lyonnais", cat: ["poisson"], area: "Vieille ville",
       address: "Rue Jean-Jacques Rousseau, Annecy", lat: 45.89903, lon: 6.12407,
       price: 3, priceText: "≈ 30–50 €",
       dishes: ["Poissons", "Fruits de mer"],
-      note: "Au bord du canal. Plutôt pour une grande occasion. Cherche la féra ou l'omble chevalier, les poissons du lac.", photos: [] },
+      note: "Au bord du canal. Plutôt pour une grande occasion. Cherche la féra ou l'omble chevalier, les poissons du lac." },
 
     { id: "tasty-crousty", name: "Tasty Crousty", cat: ["street"], area: "Centre",
       address: "Rue de l'Industrie, Annecy", lat: 45.90122, lon: 6.11998,
       price: 1, priceText: "≈ 9–13 €",
       dishes: ["Bowl riz + poulet croustillant", "Sauces au choix"],
-      note: "Rapide et copieux, près de la gare.", photos: [] },
+      note: "Rapide et copieux, près de la gare." },
 
     { id: "otacos", name: "O'Tacos", cat: ["street"], area: "Centre",
       address: "22 avenue de Chambéry, Annecy", lat: 45.89891, lon: 6.11848,
       price: 1, priceText: "≈ 8–12 €",
       dishes: ["French tacos", "Frites"],
-      note: "Des « French tacos », un concept différent du taco mexicain.", photos: [] },
+      note: "Des « French tacos », un concept différent du taco mexicain." },
 
     { id: "los-primos", name: "Los Primos", cat: ["mexicain"], area: "Centre",
       address: "2 rue Aimé Levet, Annecy", lat: 45.89766, lon: 6.13039,
       price: 2, priceText: "≈ 12–20 €",
       dishes: ["Tacos", "Burritos", "Quesadillas", "Margaritas"],
-      note: "Street food mexicaine faite maison. Horaires variables : vérifie avant.", photos: [] },
+      note: "Street food mexicaine faite maison. Horaires variables : vérifie avant." },
 
     { id: "lac-casa", name: "Lac Casa", cat: ["mexicain"], area: "Centre",
       address: "12 avenue de Chambéry, Annecy", lat: 45.89924, lon: 6.11971,
       price: 2, priceText: "≈ 15–22 €",
       dishes: ["Tacos", "Mousse de mangue"],
-      note: "Fermé le samedi midi et le dimanche. Réservation conseillée.", photos: [] },
+      note: "Fermé le samedi midi et le dimanche. Réservation conseillée." },
 
     { id: "pura-vida", name: "Pura Vida", cat: ["healthy"], area: "Centre",
       address: "2 avenue de Chambéry, Annecy", lat: 45.89966, lon: 6.12133,
       price: 2, priceText: "≈ 12–18 €",
       dishes: ["Bowls", "Poke bowls", "Avocado toast", "Salades"],
-      note: "Végétarien, vegan et healthy. Ouvert depuis 2022.", photos: [] },
+      note: "Végétarien, vegan et healthy. Ouvert depuis 2022." },
 
     { id: "kia-ora", name: "Kia Ora", cat: ["healthy"], area: "Centre",
       address: "13 rue de la Gare, Annecy", lat: 45.89977, lon: 6.12150,
       price: 2, priceText: "≈ 12–18 €",
       dishes: ["Plats végétariens et vegan"],
-      note: "100 % végétarien, à deux pas de la gare.", photos: [] },
+      note: "100 % végétarien, à deux pas de la gare." },
 
     { id: "bichette", name: "Café Bichette", cat: ["healthy"], area: "Vieille ville",
       address: "9 rue Perrière, Annecy", lat: 45.89814, lon: 6.12744,
       price: 2, priceText: "≈ 14–20 €",
       dishes: ["Poke bowl à composer", "Brunch"],
-      note: "Bio et végétarien, brunch tous les jours.", photos: [] },
+      note: "Bio et végétarien, brunch tous les jours." },
 
     { id: "pokawa", name: "Pokawa", cat: ["healthy"], area: "Centre (Courier)",
       address: "Centre commercial Courier, Annecy", lat: 45.90420, lon: 6.12426,
       price: 1, priceText: "≈ 11–15 €",
       dishes: ["Poke bowls", "Bowls végétariens"],
-      note: "Rapide, sur place ou à emporter.", photos: [] },
+      note: "Rapide, sur place ou à emporter." },
 
     { id: "bolee", name: "La Bolée", cat: ["crepes"], area: "Vieille ville",
       address: "Rue de l'Île, Annecy", lat: 45.89820, lon: 6.12641,
       price: 1, priceText: "≈ 12–20 €",
       dishes: ["Galettes de sarrasin", "Crêpes sucrées", "Cidre"],
-      note: "La crêperie la plus citée, notée 4,8 sur plus de 2 300 avis.", photos: [] },
+      note: "La crêperie la plus citée, notée 4,8 sur plus de 2 300 avis." },
 
     { id: "new-delhi", name: "New Delhi", cat: ["indien"], area: "Centre",
       address: "5 rue de Frontenex, Annecy", lat: 45.91499, lon: 6.12469,
       price: 2, priceText: "≈ 15–25 €",
       dishes: ["Plats au tandoor", "Currys", "Naans"],
-      note: "Le restaurant indien le plus cité, avec plus de 1 000 avis.", photos: [] },
+      note: "Le restaurant indien le plus cité, avec plus de 1 000 avis." },
 
     { id: "bakhchich", name: "Bakhchich Baba", cat: ["oriental"], area: "Centre",
       address: "11 bis avenue de la Mandallaz, Annecy", lat: 45.89892, lon: 6.11542,
       price: 2, priceText: "≈ 15–25 €",
       dishes: ["Couscous", "Méchoui"],
-      note: "Soirées couscous et méchoui le jeudi et le vendredi. Accepte les titres-restaurant.", photos: [] },
+      note: "Soirées couscous et méchoui le jeudi et le vendredi. Accepte les titres-restaurant." },
 
     { id: "cisele", name: "Le Ciselé", cat: ["bistrot"], area: "Centre",
       address: "13 rue Royale, Annecy", lat: 45.89987, lon: 6.12287,
       price: 1, priceText: "menu 10–20 € · plat du jour 13–17 €",
       dishes: ["Plat du jour", "Cuisine de bistrot"],
-      note: "Un des menus les moins chers du centre.", photos: [] }
+      note: "Un des menus les moins chers du centre." }
   ],
 
   /* ---------------- COFFEE SHOPS ---------------- */
@@ -250,49 +245,49 @@ window.MANGER = {
       priceText: "≈ 3–6 € la boisson", hours: "Mardi au samedi, 8 h 30 – 18 h (à vérifier)",
       tags: ["Pour travailler", "Café de spécialité", "Ateliers barista"],
       dishes: ["Espresso", "Flat white", "Café filtre"],
-      note: "Un club de café de spécialité calme et orienté créativité, idéal pour travailler ou échanger avec des baristas passionnés. Il y a un espace coworking et des salles pour les appels.", photos: [] },
+      note: "Un club de café de spécialité calme et orienté créativité, idéal pour travailler ou échanger avec des baristas passionnés. Il y a un espace coworking et des salles pour les appels." },
 
     { id: "adrenaline", name: "Adrenaline Coffee Roasters", area: "Vieille ville",
       address: "Place Georges Volland, 74000 Annecy", lat: 45.89805, lon: 6.12257,
       priceText: "≈ 3–5 € la boisson", hours: "Mardi au vendredi 8 h 30 – 17 h · samedi 9 h 30 – 16 h",
       tags: ["Torréfacteur", "Café de spécialité"],
       dishes: ["Espresso", "Café filtre", "Grains à emporter"],
-      note: "Un torréfacteur haut-savoyard (né à Cluses) qui torréfie ses propres cafés de spécialité.", photos: [] },
+      note: "Un torréfacteur haut-savoyard (né à Cluses) qui torréfie ses propres cafés de spécialité." },
 
     { id: "starbucks", name: "Starbucks Courier", area: "Centre (Courier)",
       address: "Centre commercial Courier, 65 rue Carnot, 74000 Annecy", lat: 45.90364, lon: 6.12374,
       priceText: "≈ 4–7 € la boisson", hours: "Lundi au samedi, 8 h 30 – 19 h 30 · fermé le dimanche",
       tags: ["Chaîne", "Commande sur l'appli"],
       dishes: ["Frappuccino", "Caffè latte", "Cookies"],
-      note: "Le Starbucks d'Annecy, au cœur de la ville dans le centre commercial Courier.", photos: [] },
+      note: "Le Starbucks d'Annecy, au cœur de la ville dans le centre commercial Courier." },
 
     { id: "baigneurs", name: "Les Baigneurs Café", area: "Vieille ville",
       address: "Passage des Bains, 74000 Annecy", lat: 45.89948, lon: 6.12342,
       priceText: "≈ 3–6 € la boisson", hours: "Mercredi au vendredi 8 h 30 – 17 h 30 · week-end 9 h – 18 h",
       tags: ["Café de spécialité", "Primé"],
       dishes: ["Espresso", "Flat white", "Pâtisseries"],
-      note: "Classé parmi les « World's 100 Best Coffee Shops » en 2025.", photos: [] },
+      note: "Classé parmi les « World's 100 Best Coffee Shops » en 2025." },
 
     { id: "slake", name: "Slake Coffee", area: "Centre",
       address: "29 rue Sommeiller, 74000 Annecy", lat: 45.90244, lon: 6.12618,
       priceText: "≈ 3–6 € la boisson · brunch ≈ 15–20 €", hours: "Lundi au samedi 8 h 30 – 18 h · dimanche 8 h 30 – 17 h",
       tags: ["Torréfacteur", "Brunch", "Ouvert le dimanche"],
       dishes: ["Café maison", "Brunch"],
-      note: "Torréfie ses propres grains, près du lac.", photos: [] },
+      note: "Torréfie ses propres grains, près du lac." },
 
     { id: "bunna", name: "Café Bunna", area: "Vieille ville",
       address: "17 rue Jean-Jacques Rousseau, 74000 Annecy", lat: 45.89900, lon: 6.12510,
       priceText: "≈ 3–6 € la boisson", hours: "Mercredi au vendredi 8 h – 15 h · samedi 8 h – 17 h · dimanche 8 h – 12 h 30",
       tags: ["Service à table", "Douceurs maison"],
       dishes: ["Café", "Gâteaux maison"],
-      note: "On s'assoit et on est servi à table, plus calme qu'un coffee shop classique.", photos: [] },
+      note: "On s'assoit et on est servi à table, plus calme qu'un coffee shop classique." },
 
     { id: "haven", name: "Haven", area: "Vieille ville",
       address: "5 rue Filaterie, 74000 Annecy", lat: 45.89970, lon: 6.12629,
       priceText: "≈ 4–6 € la boisson · brunch ≈ 15–22 €",
       tags: ["Brunch", "Inspiration australienne"],
       dishes: ["Flat white", "Brunch"],
-      note: "Coffee shop d'inspiration australienne avec une cuisine généreuse.", photos: [] }
+      note: "Coffee shop d'inspiration australienne avec une cuisine généreuse." }
   ],
 
   /* ---------------- SUPERMARCHÉS ---------------- */

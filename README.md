@@ -24,7 +24,6 @@ Ajoute, renomme ou supprime un élément : le menu, les cartes et les pages se m
 Le contenu est dans `data/manger-data.js` : lieux du Crous, restaurants (avec catégories et prix), coffee shops et supermarchés. Chaque lieu a une position (`lat`, `lon`) pour la carte et le calcul de distance depuis le campus.
 
 - Ajouter un restaurant : copie un bloc `{ id: ..., name: ... }` dans la liste `restaurants` et change les valeurs.
-- Ajouter une photo d'étudiant : mets l'image dans `images/partages/`, puis ajoute-la dans `photos` du lieu, par exemple `photos: [{ src: "images/partages/ru-lasagnes.jpg", caption: "Lasagnes du jeudi", by: "Léa" }]`.
 - Le code d'affichage est dans `js/manger.js`. La carte utilise Leaflet et OpenStreetMap.
 
 Chaque lieu a un bouton « Photos sur Google Maps » qui ouvre sa fiche Google Maps (photos, avis, horaires). Si le bouton tombe sur une liste au lieu du bon lieu, ajoute `gmaps: "Nom exact sur Google Maps"` au lieu dans `data/manger-data.js`.

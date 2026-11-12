@@ -161,16 +161,6 @@ ul.clean li::before{content:"";position:absolute;left:2px;top:.68em;width:7px;he
 .fact figcaption{font-size:16px}
 .fact b{font-family:var(--f-head);font-size:19px;display:block;margin-bottom:4px}
 .credit{display:block;font-size:13px;color:var(--soft);margin-top:6px}
-details.share{margin-top:12px;border-top:1.5px dashed var(--line);padding-top:10px}
-details.share summary{font-family:var(--f-head);font-weight:700;font-size:14.5px;cursor:pointer}
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:10px 0}
-.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;display:block}
-.gallery figure{margin:0}.gallery figcaption{font-size:12.5px;color:var(--soft)}
-.gallery-empty{font-size:14.5px;color:var(--soft);font-style:italic;margin:8px 0}
-.share-cta{font-size:14.5px;margin:6px 0 0}
-.share-box{margin-top:30px;background:var(--sky);border:1.5px solid var(--ink);border-radius:16px;padding:18px 20px;box-shadow:4px 4px 0 var(--ink)}
-.share-box h3{font-family:var(--f-head);font-weight:800;font-size:21px;margin:0 0 6px}
-.share-box p:last-child{margin:0}
 @media (max-width:640px){.fact{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}}
 
 /* map dialog */
@@ -306,7 +296,6 @@ var TOPICS = [
     });
     if (t.custom && typeof window[t.custom] === 'function') {
       window[t.custom](bodies);
-      secs.appendChild(el('aside',{class:'share-box'},'<h3>Partage tes photos de plats</h3><p>N’hésite pas à partager tes photos de plats pour que les autres voient ce qu’on mange au Crous, au resto ou au café. Pas besoin de compte : envoie ta photo avec le nom du lieu à l’équipe du guide. On la vérifie, puis on l’ajoute sur la page.</p><p><strong>Contact :</strong> <span class="contact-todo">adresse à ajouter par l’équipe</span></p>'));
     }
     var pager = el('div',{class:'pager'});
     var prev = i===0 ? {id:'accueil',title:'Accueil'} : TOPICS[i-1];

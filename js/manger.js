@@ -26,14 +26,6 @@
   function list(items) { return items && items.length ? '<ul class="clean">' + items.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>' : ''; }
   function dishes(items, label) { return items && items.length ? '<p class="dish-label">' + (label || 'À goûter') + '</p><div class="dishes">' + items.map(function (i) { return '<span>' + esc(i) + '</span>'; }).join('') + '</div>' : ''; }
 
-  function photosBlock(p) {
-    var ph = p.photos || [];
-    var gallery = ph.length
-      ? '<div class="gallery">' + ph.map(function (f) { return '<figure><img src="' + esc(f.src) + '" alt="' + esc(f.caption || ('Plat à ' + p.name)) + '" loading="lazy"><figcaption>' + esc(f.caption || '') + (f.by ? ' · photo de ' + esc(f.by) : '') + '</figcaption></figure>'; }).join('') + '</div>'
-      : '<p class="gallery-empty">Pas encore de photo de plat ici.</p>';
-    return '<details class="share"><summary>Photos des étudiants (' + ph.length + ')</summary>' + gallery +
-      '<p class="share-cta"><strong>N’hésite pas à partager tes photos de plats</strong> pour que les autres voient ce qu’on mange ici ! Envoie-les à l’équipe du guide (contact plus bas). On les vérifie, puis on les ajoute.</p></details>';
-  }
 
   var ALL = {};
   function reg(kind, arr) { arr.forEach(function (p) { ALL[kind + ':' + p.id] = p; }); }
@@ -68,8 +60,7 @@
         list(p.info) +
         (p.tip ? '<div class="tip"><b>Astuce</b><p>' + esc(p.tip) + '</p></div>' : '') +
         (p.figure ? '<figure class="big-fig"><img src="' + esc(p.figure.src) + '" alt="' + esc(p.figure.alt) + '" loading="lazy"><figcaption>' + esc(p.figure.caption) + '</figcaption></figure>' : '') +
-        '<p class="src-line"><a href="' + esc(p.link) + '" target="_blank" rel="noopener">Page officielle du Crous</a></p>' +
-        photosBlock(p) + '</article>';
+        '<p class="src-line"><a href="' + esc(p.link) + '" target="_blank" rel="noopener">Page officielle du Crous</a></p>' + '</article>';
     }).join('');
     return general + '<div class="places">' + places + '</div>';
   }
@@ -102,7 +93,7 @@
       '<h4>' + esc(r.name) + '</h4><p class="meta">' + esc(r.area) + ' · ' + esc(r.address) + '</p>' +
       '<p class="price-line">' + euros(r.price) + ' <span>' + esc(r.priceText) + '</span></p>' +
       dishes(r.dishes) + (r.note ? '<p class="note-line">' + esc(r.note) + '</p>' : '') +
-      '<div class="place-foot">' + distChip(r) + actions(r, 'resto') + '</div>' + photosBlock(r) + '</article>';
+      '<div class="place-foot">' + distChip(r) + actions(r, 'resto') + '</div>' + '</article>';
   }
   function renderResto() {
     var items = D.restaurants.filter(function (r) {
@@ -123,7 +114,7 @@
           '<p class="price-line"><span>' + esc(c.priceText) + '</span></p>' +
           (c.hours ? '<p class="hours">' + esc(c.hours) + '</p>' : '') +
           dishes(c.dishes) + (c.note ? '<p class="note-line">' + esc(c.note) + '</p>' : '') +
-          '<div class="place-foot">' + distChip(c) + actions(c, 'coffee') + '</div>' + photosBlock(c) + '</article>';
+          '<div class="place-foot">' + distChip(c) + actions(c, 'coffee') + '</div>' + '</article>';
       }).join('') + '</div>';
   }
 
