@@ -26,6 +26,30 @@
   function list(items) { return items && items.length ? '<ul class="clean">' + items.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>' : ''; }
   function dishes(items, label) { return items && items.length ? '<p class="dish-label">' + (label || 'À goûter') + '</p><div class="dishes">' + items.map(function (i) { return '<span>' + esc(i) + '</span>'; }).join('') + '</div>' : ''; }
 
+  /* Pastille illustrée (voir js/icons.js) */
+  function sticker(key) {
+    var I = (window.ICONS || {})[key];
+    return I ? '<div class="sticker" style="background:' + I.bg + '">' + I.svg + '</div>' : '';
+  }
+
+  /* Photos d'Annecy en tête de chaque rubrique (Wikimedia Commons, licences libres) */
+  var BANNERS = {
+    crous: { img: 'images/banners/crous.jpg', title: 'Manger au Crous', text: 'Le repas à 1 €, la formule à points et les quatre lieux du campus d’Annecy-le-Vieux.',
+      caption: 'La cafétéria de l’IUT d’Annecy', credit: 'Guilhem Vellut, CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Cafeteria_@_IUT_Annecy_-_Universit%C3%A9_Savoie_Mont-Blanc_@_University_campus_@_Annecy-le-Vieux_(50175763733).jpg' },
+    restaurants: { img: 'images/banners/restaurants.jpg', title: 'Restaurants et cafés', text: D.restaurants.length + ' adresses, du ramen au burger, pour tous les budgets.',
+      caption: 'Le canal du Thiou et ses terrasses', credit: 'Guilhem Vellut, CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Canal_@_Thiou_@_Old_Town_@_Annecy_(37040038082).jpg' },
+    coffee: { img: 'images/banners/coffee.jpg', title: 'Coffee shops', text: 'Café de spécialité, brunch et coins calmes pour travailler, surtout dans la vieille ville.',
+      caption: 'Le Palais de l’Isle', credit: 'Tournasol7, CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Palais_de_l%27Isle_in_Annecy_04.jpg', pos: 'center 45%' },
+    supermarches: { img: 'images/banners/supermarches.jpg', title: 'Supermarchés', text: 'Faire ses courses sans se ruiner. Et le marché de la vieille ville, le mardi, le vendredi et le dimanche matin.',
+      caption: 'Le marché le long des canaux', credit: 'Frédérique Voisin-Demery, CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Les_chalands_le_long_des_canaux_(Annecy).jpg' }
+  };
+  function bannerHTML(key) {
+    var b = BANNERS[key];
+    return '<div class="banner" role="img" aria-label="' + esc(b.caption) + '" style="background-image:url(' + b.img + ');background-position:' + (b.pos || 'center 60%') + '">' +
+      '<a class="banner-credit" href="' + b.url + '" target="_blank" rel="noopener">' + esc(b.caption) + ' · Photo : ' + esc(b.credit) + '</a>' +
+      '<div class="banner-txt"><h2>' + esc(b.title) + '</h2><p>' + esc(b.text) + '</p></div></div>';
+  }
+
 
   var ALL = {};
   function reg(kind, arr) { arr.forEach(function (p) { ALL[kind + ':' + p.id] = p; }); }
@@ -88,7 +112,7 @@
       '<p class="count" id="resto-count" aria-live="polite"></p><div class="grid cards" id="resto-list"></div>';
   }
   function restoCard(r) {
-    return '<article class="place">' +
+    return '<article class="place has-sticker">' + sticker(r.cat[0]) +
       '<div class="tags">' + r.cat.map(function (c) { return '<span class="tag pine">' + esc(catLabel(c)) + '</span>'; }).join('') + '</div>' +
       '<h4>' + esc(r.name) + '</h4><p class="meta">' + esc(r.area) + ' · ' + esc(r.address) + '</p>' +
       '<p class="price-line">' + euros(r.price) + ' <span>' + esc(r.priceText) + '</span></p>' +
@@ -107,9 +131,9 @@
 
   /* ---------- 3. COFFEE SHOPS ---------- */
   function coffeeHTML() {
-    return '<p class="sub">Pour un café de spécialité, travailler au calme ou bruncher le week-end.</p><div class="grid cards">' +
+    return '<div class="grid cards">' +
       D.coffee.map(function (c) {
-        return '<article class="place"><div class="tags">' + (c.tags || []).map(function (t) { return '<span class="tag pine">' + esc(t) + '</span>'; }).join('') + '</div>' +
+        return '<article class="place has-sticker">' + sticker('coffee') + '<div class="tags">' + (c.tags || []).map(function (t) { return '<span class="tag pine">' + esc(t) + '</span>'; }).join('') + '</div>' +
           '<h4>' + esc(c.name) + '</h4><p class="meta">' + esc(c.area) + ' · ' + esc(c.address) + '</p>' +
           '<p class="price-line"><span>' + esc(c.priceText) + '</span></p>' +
           (c.hours ? '<p class="hours">' + esc(c.hours) + '</p>' : '') +
@@ -125,7 +149,7 @@
         esc(m.photo.caption || (m.photo.generic ? 'Un magasin ' + m.name + ' (photo d’illustration, pas celui d’Annecy)' : m.name)) +
         ' · <a href="' + esc(m.photo.url) + '" target="_blank" rel="noopener">' + esc(m.photo.credit) + ', ' + esc(m.photo.license) + '</a></figcaption></figure>'
       : '';
-    return '<article class="place shop">' + ph +
+    return '<article class="place shop has-sticker">' + ph + sticker('market') +
       '<div class="tags"><span class="tag pine">' + esc(m.area) + '</span></div>' +
       '<h4>' + esc(m.name) + '</h4><p class="meta">' + esc(m.address) + '</p>' +
       '<p class="price-line">' + euros(m.price) + ' <span>' + ['', 'petits prix', 'prix moyens', 'plus cher'][m.price] + '</span></p>' +
@@ -135,8 +159,7 @@
   function marketHTML() {
     var near = D.supermarkets.filter(function (m) { return m.group === 'campus'; });
     var town = D.supermarkets.filter(function (m) { return m.group !== 'campus'; });
-    return '<p class="sub">Où faire tes courses, du moins cher au plus pratique.</p>' +
-      '<div class="lead-grid">' +
+    return '<div class="lead-grid">' +
         '<div class="card"><h3>Payer moins cher</h3><ul class="clean"><li>Les discounts (Lidl) ont souvent le panier le moins cher.</li><li>Les marques du magasin coûtent moins que les grandes marques.</li><li>Les cartes de fidélité sont gratuites et donnent des réductions.</li></ul></div>' +
         '<div class="card"><h3>Anti-gaspi</h3><p>Avec l’appli Too Good To Go, les magasins et boulangeries vendent leurs invendus du jour en paniers surprise, pour environ un tiers du prix.</p></div>' +
         '<div class="note sky"><b>Le dimanche</b>La plupart des supermarchés ferment vers midi. Fais tes courses le samedi, ou va dans une supérette (Carrefour City, Monoprix).</div>' +
@@ -194,10 +217,15 @@
 
   /* ---------- montage dans la page ---------- */
   window.renderManger = function (sections) {
-    sections['crous'].innerHTML = crousHTML();
-    sections['restaurants'].innerHTML = restoShell();
-    sections['coffee'].innerHTML = coffeeHTML();
-    sections['supermarches'].innerHTML = marketHTML();
+    sections['crous'].innerHTML = bannerHTML('crous') + crousHTML();
+    sections['restaurants'].innerHTML = bannerHTML('restaurants') + restoShell();
+    sections['coffee'].innerHTML = bannerHTML('coffee') + coffeeHTML();
+    sections['supermarches'].innerHTML = bannerHTML('supermarches') + marketHTML();
+    Object.keys(sections).forEach(function (k) {
+      var sec = sections[k].parentNode, h = sec.querySelector(':scope > h2');
+      if (h) h.hidden = true;
+      sec.classList.add('with-banner');
+    });
     restoRoot = sections['restaurants'];
     renderResto();
 

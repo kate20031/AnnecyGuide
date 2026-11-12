@@ -28,7 +28,7 @@ Le contenu est dans `data/manger-data.js` : lieux du Crous, restaurants (avec ca
 
 Chaque lieu a un bouton « Photos sur Google Maps » qui ouvre sa fiche Google Maps (photos, avis, horaires). Si le bouton tombe sur une liste au lieu du bon lieu, ajoute `gmaps: "Nom exact sur Google Maps"` au lieu dans `data/manger-data.js`.
 
-Photo « Le saviez-vous ? » : Gnrc, Wikimedia Commons, CC BY-SA 4.0.
+Photos des bannières et « Le saviez-vous ? » : Wikimedia Commons, licences libres (auteur et licence affichés sur chaque photo). Les illustrations des cartes sont dans `js/icons.js` (une par catégorie).
 
 ## Après une modification
 

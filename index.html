@@ -9,8 +9,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="data/manger-data.js?v=20261112d"></script>
-<script src="js/manger.js?v=20261112d"></script>
+<script src="data/manger-data.js?v=20261112e"></script>
+<script src="js/icons.js?v=20261112e"></script>
+<script src="js/manger.js?v=20261112e"></script>
 <style>
 /* Layout: travel-notebook guide template. Sticky chip nav, one topic visible at a time (hash routing), subtopic chips that jump to sections. Single light "paper" theme by choice. */
 :root{
@@ -167,6 +168,26 @@ ul.clean li::before{content:"";position:absolute;left:2px;top:.68em;width:7px;he
 .fact b{font-family:var(--f-head);font-size:19px;display:block;margin-bottom:4px}
 .credit{display:block;font-size:13px;color:var(--soft);margin-top:6px}
 @media (max-width:640px){.fact{grid-template-columns:1fr}.tip{flex-direction:column;gap:8px}}
+
+/* photo banners (one per rubrique) */
+.banner{position:relative;border-radius:16px;overflow:hidden;border:1.5px solid var(--ink);margin:0 0 22px;min-height:230px;display:flex;align-items:flex-end;background-size:cover;background-color:var(--pine)}
+.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(26,20,14,0) 30%,rgba(26,20,14,.78))}
+.banner-txt{position:relative;padding:20px 22px;color:#fff}
+.banner-txt h2{font-weight:800;font-size:clamp(28px,4.4vw,42px);line-height:1.04;color:#fff;margin:0}
+.banner-txt p{margin:6px 0 0;max-width:56ch;font-size:15.5px;color:#f3ece0}
+.banner-credit{position:absolute;right:10px;top:8px;z-index:1;font:500 11.5px var(--f-head);color:#fff;background:rgba(0,0,0,.42);padding:2px 8px;border-radius:6px;text-decoration:none;max-width:calc(100% - 20px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.banner-credit:hover{background:rgba(0,0,0,.65);color:#fff}
+@media (max-width:560px){.banner{min-height:190px}.banner-txt{padding:16px}}
+
+/* illustrated stickers on cards */
+.grid.cards{row-gap:34px;padding-top:18px}
+.place.has-sticker{position:relative}
+.place.has-sticker > .tags,.place.has-sticker > h4{padding-right:70px}
+.sticker{position:absolute;top:-20px;right:12px;width:70px;height:70px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;box-shadow:3px 3px 0 var(--ink);transform:rotate(-8deg);z-index:1}
+.sticker svg{width:48px;height:48px;display:block}
+.place:hover .sticker{transform:rotate(4deg) scale(1.05);transition:transform .2s}
+@media (prefers-reduced-motion:reduce){.place:hover .sticker{transform:rotate(-8deg)}}
+@media (max-width:560px){.sticker{width:60px;height:60px;top:-16px}.sticker svg{width:40px;height:40px}.place.has-sticker > .tags,.place.has-sticker > h4{padding-right:58px}}
 
 /* map dialog */
 #map-dialog{border:1.5px solid var(--ink);border-radius:18px;padding:0;width:min(720px,calc(100vw - 24px));max-height:calc(100dvh - 24px);background:var(--card);color:var(--ink);box-shadow:6px 6px 0 var(--ink)}
