@@ -28,7 +28,7 @@ window.MANGER = {
       address: "3 chemin de Bellevue, 74940 Annecy-le-Vieux",
       lat: 45.91937, lon: 6.15708,
       hours: "Lundi au vendredi, 11 h 30 – 13 h 30 · fermé le week-end",
-      pay: "Izly",
+      pay: "Izly ou carte bancaire",
       access: "Bus 2 et 4",
       main: true,
       info: [
@@ -47,7 +47,7 @@ window.MANGER = {
       address: "2 allée Louis de Broglie, 74940 Annecy-le-Vieux",
       lat: 45.91967, lon: 6.15787,
       hours: "Lundi au vendredi, 8 h – 10 h 45 et 11 h 30 – 14 h",
-      pay: "Izly",
+      pay: "Izly ou carte bancaire",
       info: [
         "Dans l'école d'ingénieurs de l'USMB, à 50 m du restaurant universitaire.",
         "Pratique si tu as cours à côté ou si la file du RU est trop longue."
@@ -62,7 +62,7 @@ window.MANGER = {
       address: "Domaine universitaire, 74940 Annecy-le-Vieux",
       lat: 45.91940, lon: 6.15985,
       hours: "Lundi au vendredi, 11 h 30 – 13 h 30",
-      pay: "Izly",
+      pay: "Izly ou carte bancaire",
       phone: "04 50 09 53 08",
       info: [
         "Un libre-service à côté de la résidence Crous Tom Morel, à environ 230 m du RU.",

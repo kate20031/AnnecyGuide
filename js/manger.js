@@ -45,7 +45,7 @@
       '<div class="lead-grid two">' +
         '<div class="card"><h3>Payer avec Izly</h3><p>Izly est le porte-monnaie du Crous : c’est lui qui te donne le tarif étudiant. Après ton inscription, tu reçois un courriel d’activation sur ton adresse étudiante.</p>' +
           '<p><strong>Si ça bloque :</strong> crée ton compte sur le site <a href="https://www.izly.fr/" target="_blank" rel="noopener">izly.fr</a> plutôt que dans l’appli, vérifie le courriel reçu, puis contacte le support Izly.</p></div>' +
-        '<div class="card"><h3>Trois façons de payer</h3><ul class="clean"><li><strong>Appli Izly :</strong> montre le QR code à la caisse.</li><li><strong>Carte étudiante :</strong> si elle est liée à ton compte Izly.</li><li><strong>Carte bancaire :</strong> acceptée dans certains lieux, mais au prix normal.</li></ul></div>' +
+        '<div class="card"><h3>Trois façons de payer</h3><ul class="clean"><li><strong>Appli Izly :</strong> montre le QR code à la caisse.</li><li><strong>Carte étudiante :</strong> si elle est liée à ton compte Izly.</li><li><strong>Carte bancaire :</strong> acceptée aussi, mais au prix normal (pas de tarif étudiant).</li></ul></div>' +
       '</div>' +
       '<div class="warn"><b>À savoir :</b> avec une carte bancaire classique, tu n’as pas le tarif étudiant. Pour le repas à 1 €, paie toujours avec Izly.</div>' +
       '<h3 class="list-title">Les lieux du Crous sur le campus</h3>';
