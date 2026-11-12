@@ -1,0 +1,193 @@
+<title>Le Petit Annécien</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+<style>
+/* Layout: travel-notebook guide template. Sticky chip nav, one topic visible at a time (hash routing), subtopic chips that jump to sections. Single light "paper" theme by choice. */
+:root{
+  --paper:#fbf8f2; --card:#ffffff; --ink:#262019; --soft:#5a4d3f; --line:#e4dccd;
+  --red:#c8102e; --pine:#2f5d50; --butter:#f3d36b; --sky:#bfe0ea; --mint:#d9ebe0;
+  --f-head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:var(--pine);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px;border-radius:6px}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.inner{max-width:1080px;margin:0 auto}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1.5px solid var(--ink)}
+.top .inner{display:flex;align-items:center;gap:18px;padding-block:12px}
+.logo{font-family:var(--f-head);font-weight:800;font-size:21px;display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);white-space:nowrap}
+.flag{width:22px;height:22px;background:var(--red);position:relative;border-radius:4px;flex:none}
+.flag::before,.flag::after{content:"";position:absolute;background:#fff}
+.flag::before{left:9px;top:3px;width:4px;height:16px}.flag::after{left:3px;top:9px;width:16px;height:4px}
+.menu{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0;margin-left:auto;padding:3px}
+.menu::-webkit-scrollbar{display:none}
+.menu a{font-family:var(--f-head);font-weight:500;font-size:14.5px;color:var(--ink);text-decoration:none;padding:6px 13px;border:1.5px solid var(--ink);border-radius:999px;white-space:nowrap;transition:background .15s}
+.menu a:hover{background:var(--butter)}
+.menu a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+@media (max-width:760px){.top .inner{flex-wrap:wrap;gap:10px}.menu{margin-left:0;width:100%}}
+
+/* pages */
+.page{padding-block:36px 64px}
+.page[hidden]{display:none!important}
+.kicker{font-family:var(--f-head);font-weight:800;color:var(--red);font-size:14px}
+h1,h2,h3{font-family:var(--f-head);text-wrap:balance;margin:0}
+h1{font-weight:800;font-size:clamp(38px,6.2vw,66px);line-height:.95;letter-spacing:-.025em;margin:6px 0 14px}
+h1 mark{background:var(--butter);color:inherit;padding:0 .12em}
+.lede{font-size:18px;max-width:52ch;margin:0;color:var(--soft)}
+h2{font-weight:800;font-size:clamp(24px,3.2vw,30px);letter-spacing:-.015em;line-height:1.1}
+p{margin:0 0 12px}
+
+/* home */
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;margin-bottom:40px}
+.stack{position:relative;min-height:290px}
+.note{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;padding:14px 16px;box-shadow:4px 4px 0 var(--ink);font-size:15px}
+.note b{font-family:var(--f-head);font-weight:800;display:block;font-size:17px;margin-bottom:2px}
+.note.sky{background:var(--sky)}.note.butter{background:var(--butter)}
+.stack .note{position:absolute;max-width:240px}
+.stack .n1{top:0;left:4%;transform:rotate(-3deg)}
+.stack .n2{top:100px;right:0;transform:rotate(2.5deg)}
+.stack .n3{bottom:0;left:14%;transform:rotate(-1deg)}
+.topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.topic{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);background:var(--card);border:1.5px solid var(--ink);border-radius:16px;padding:18px 20px;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s,background .15s}
+.topic:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);background:#fffdf6}
+.topic small{font-family:var(--f-head);font-weight:800;color:var(--red);font-size:13px}
+.topic strong{font-family:var(--f-head);font-weight:800;font-size:22px;line-height:1.1}
+.topic span{font-size:14.5px;color:var(--soft)}
+.topic em{font-style:normal;font-family:var(--f-head);font-weight:700;font-size:14px;margin-top:auto;padding-top:8px}
+
+/* topic page */
+.chap-head{margin-bottom:22px}
+.subnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px}
+.subnav button{font:500 14.5px var(--f-head);color:var(--ink);background:var(--card);border:1.5px solid var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer}
+.subnav button:hover{background:var(--butter)}
+.sections{display:grid;gap:16px}
+.sec{background:var(--card);border:1.5px solid var(--ink);border-radius:16px;padding:20px 22px;scroll-margin-top:120px}
+.sec h2{margin-bottom:8px}
+.placeholder{border:1.5px dashed #b9ad99;border-radius:12px;padding:14px 16px;color:var(--soft);font-style:italic;font-size:15px;background:var(--paper)}
+.placeholder p{margin:0}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:36px}
+.pager a{font-family:var(--f-head);font-weight:800;font-size:17px;color:var(--ink);text-decoration:none;border:1.5px solid var(--ink);border-radius:999px;padding:10px 20px;box-shadow:3px 3px 0 var(--ink);background:var(--card)}
+.pager a.fwd{background:var(--butter);margin-left:auto}
+.pager a:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink)}
+
+footer{border-top:1.5px solid var(--ink);padding-block:26px 40px;font-size:14.5px;color:var(--soft)}
+footer .inner{display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr}
+  .stack{min-height:0;display:grid;gap:14px}
+  .stack .note{position:static;max-width:none;transform:none}
+}
+</style>
+
+<header class="top gutter">
+  <div class="inner">
+    <a class="logo" href="#accueil"><span class="flag" aria-hidden="true"></span>Le Petit Annécien</a>
+    <nav class="menu" aria-label="Thèmes" id="menu"></nav>
+  </div>
+</header>
+
+<main class="gutter">
+  <div class="inner" id="app">
+    <section class="page" data-page="accueil">
+      <div class="hero">
+        <div>
+          <div class="kicker">Guide de rentrée · USMB Annecy</div>
+          <h1>Annecy, <mark>mode d’emploi</mark> pour les nouveaux.</h1>
+          <p class="lede">Le guide pratique des étudiants : manger, se déplacer, se loger et profiter d’Annecy.</p>
+        </div>
+        <div class="stack" aria-label="Exemples de conseils">
+          <div class="note sky n1"><b>Astuce</b>Un conseil court s’affichera ici.</div>
+          <div class="note n2"><b>Bon plan</b>Un bon plan étudiant s’affichera ici.</div>
+          <div class="note butter n3"><b>À savoir</b>Une info importante s’affichera ici.</div>
+        </div>
+      </div>
+      <h2 style="margin-bottom:16px">Choisis un thème</h2>
+      <div class="topics" id="topics"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="gutter">
+  <div class="inner">
+    <span><strong style="font-family:var(--f-head);color:var(--ink)">Le Petit Annécien</strong> · un guide écrit par des étudiants, pour les étudiants.</span>
+    <span>Les prix et horaires changent : vérifie toujours sur le site officiel.</span>
+  </div>
+</footer>
+
+<script>
+/* ====== EDIT HERE: topics and subtopics of the guide ====== */
+var TOPICS = [
+  { id:"carte", title:"Carte", hl:"La carte", desc:"Les lieux importants en un coup d’œil.",
+    subs:["Lieux importants","USMB","Transports","Restaurants et magasins"] },
+  { id:"usmb", title:"USMB · Vie étudiante", hl:"La vie étudiante", desc:"Le campus, les services et les infos utiles.",
+    subs:["Campus","Services étudiants","Informations utiles"] },
+  { id:"transports", title:"Transports", hl:"Se déplacer", desc:"Bus, train et tarifs.",
+    subs:["Bus","Train","Tarifs"] },
+  { id:"velo", title:"Vélo", hl:"À vélo", desc:"Louer un vélo et circuler en ville.",
+    subs:["Location longue durée","Libre-service","Tarifs"] },
+  { id:"manger", title:"Manger sans se ruiner", hl:"Manger sans se ruiner", desc:"Restos pas chers, CROUS et supermarchés.",
+    subs:["Restaurants pas chers","CROUS","Supermarchés","Prix"] },
+  { id:"activites", title:"Idées d’activités", hl:"Idées d’activités", desc:"Sorties, visites et bons plans.",
+    subs:["Activités","Lieux à visiter","Sorties","Bons plans"] },
+  { id:"logement", title:"Logement", hl:"Se loger", desc:"Trouver un logement et gérer son budget.",
+    subs:["Résidences étudiantes","Logement privé","Budget"] }
+];
+/* ========================================================== */
+
+(function(){
+  var app = document.getElementById('app'), menu = document.getElementById('menu'), grid = document.getElementById('topics');
+  function el(tag, attrs, html){ var e=document.createElement(tag); for(var k in attrs||{}) e.setAttribute(k, attrs[k]); if(html!=null) e.innerHTML=html; return e; }
+  function slug(s){ return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+
+  menu.appendChild(el('a',{href:'#accueil'},'Accueil'));
+  TOPICS.forEach(function(t, i){
+    menu.appendChild(el('a',{href:'#'+t.id}, t.title));
+
+    var card = el('a',{class:'topic',href:'#'+t.id});
+    card.innerHTML = '<small>Thème '+(i+1)+'</small><strong>'+t.title+'</strong><span>'+t.desc+'</span><em>Ouvrir →</em>';
+    grid.appendChild(card);
+
+    var page = el('section',{class:'page','data-page':t.id, hidden:''});
+    var head = el('div',{class:'chap-head'},'<div class="kicker">Thème '+(i+1)+'</div><h1><mark>'+t.hl+'</mark></h1><p class="lede">'+t.desc+'</p>');
+    var sub = el('div',{class:'subnav',role:'navigation','aria-label':'Sous-thèmes'});
+    var secs = el('div',{class:'sections'});
+    t.subs.forEach(function(s){
+      var sid = t.id+'-'+slug(s);
+      var b = el('button',{type:'button'}, s);
+      b.addEventListener('click', function(){ var target=document.getElementById(sid); target.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth', block:'start'}); target.focus({preventScroll:true}); });
+      sub.appendChild(b);
+      secs.appendChild(el('article',{class:'sec',id:sid,tabindex:'-1'},'<h2>'+s+'</h2><div class="placeholder"><p>Contenu à ajouter : '+s.toLowerCase()+'.</p></div>'));
+    });
+    var pager = el('div',{class:'pager'});
+    var prev = i===0 ? {id:'accueil',title:'Accueil'} : TOPICS[i-1];
+    pager.appendChild(el('a',{href:'#'+prev.id},'← '+prev.title));
+    if (TOPICS[i+1]) pager.appendChild(el('a',{href:'#'+TOPICS[i+1].id,class:'fwd'}, TOPICS[i+1].title+' →'));
+    page.appendChild(head); page.appendChild(sub); page.appendChild(secs); page.appendChild(pager);
+    app.appendChild(page);
+  });
+
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var names = pages.map(function(p){ return p.dataset.page; });
+  function show(){
+    var h = location.hash.replace('#','');
+    var name = names.indexOf(h) >= 0 ? h : 'accueil';
+    pages.forEach(function(p){ p.hidden = p.dataset.page !== name; });
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function(a){
+      if (a.getAttribute('href') === '#'+name) { a.setAttribute('aria-current','page'); try{ a.scrollIntoView({block:'nearest',inline:'nearest'}); }catch(e){} }
+      else a.removeAttribute('aria-current');
+    });
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange', show);
+  show();
+})();
+</script>

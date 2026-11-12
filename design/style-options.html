@@ -1,0 +1,304 @@
+<title>Annecy Guide Styles</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Figtree:wght@400;500;700&family=Archivo:wdth,wght@75..125,400..900&family=IBM+Plex+Mono:wght@500&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Literata:opsz,wght@7..72,400;7..72,600&family=Manrope:wght@300;500;800&display=swap">
+<style>
+/* Layout: a showroom page — four full homepage mockups stacked, each in a browser frame with its palette + type spec beneath */
+:root{
+  --bg:#f3f5f6; --surface:#ffffff; --fg:#16212a; --muted:#5d6b76; --line:#dbe1e5; --accent:#1f6f86;
+  --f-head:"Space Grotesk",system-ui,sans-serif; --f-body:"Inter",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f151a;--surface:#161e25;--fg:#e6ecef;--muted:#93a3ae;--line:#26323b;--accent:#6cc3d8;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f151a;--surface:#161e25;--fg:#e6ecef;--muted:#93a3ae;--line:#26323b;--accent:#6cc3d8;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 80px}
+header.intro h1{font-family:var(--f-head);font-size:clamp(28px,4vw,40px);margin:0 0 8px;text-wrap:balance}
+header.intro p{color:var(--muted);max-width:62ch;margin:0}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 8px}
+.jump a{font-family:var(--f-head);font-weight:500;text-decoration:none;color:var(--fg);border:1px solid var(--line);background:var(--surface);padding:8px 14px;border-radius:999px;font-size:14px}
+.jump a:hover,.jump a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+section.style{margin-top:56px;scroll-margin-top:16px}
+.style-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;margin-bottom:6px}
+.style-head .letter{font-family:var(--f-head);font-weight:700;color:var(--accent);font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+.style-head h2{font-family:var(--f-head);font-size:26px;margin:0}
+.style-desc{color:var(--muted);max-width:70ch;margin:0 0 16px}
+.frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);box-shadow:0 10px 30px -18px rgba(10,30,40,.35)}
+.bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line);background:var(--surface)}
+.bar i{width:10px;height:10px;border-radius:50%;background:var(--line);display:block}
+.bar span{margin-left:10px;font-size:12px;color:var(--muted);background:var(--bg);padding:3px 10px;border-radius:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;min-width:0}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:16px 28px;margin-top:14px;align-items:center}
+.swatches{display:flex;gap:6px;flex-wrap:wrap}
+.swatches b{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);display:block}
+.spec p{margin:0;color:var(--muted);font-size:13.5px}
+.spec p strong{color:var(--fg);font-weight:600}
+.best{font-size:13.5px;color:var(--muted);margin-top:8px}
+.best strong{color:var(--fg)}
+@media (max-width:640px){.spec{grid-template-columns:1fr}}
+
+/* ============ A · LAC & SOMMETS ============ */
+.A{--a-ink:#0e2a3b;--a-lake:#2b8a9b;--a-snow:#f6f9fa;--a-mist:#dfeaee;--a-sun:#e9b44c;font-family:"Figtree",system-ui,sans-serif;background:var(--a-snow);color:var(--a-ink)}
+.A nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 28px;flex-wrap:wrap}
+.A .logo{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:20px}
+.A .logo em{font-style:italic;color:var(--a-lake);font-weight:400}
+.A nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;font-size:14px;flex-wrap:wrap}
+.A .hero{position:relative;background:linear-gradient(#cfe4ea,#eaf3f5 55%,#2b8a9b 55.2%,#1e6f7f);min-height:340px;overflow:hidden}
+.A .hero svg{position:absolute;left:0;bottom:45%;width:100%;height:auto}
+.A .hero-text{position:relative;padding:44px 28px 0;max-width:560px}
+.A .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--a-lake);font-weight:700}
+.A h3{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:clamp(32px,5vw,52px);line-height:1.04;margin:10px 0 14px;text-wrap:balance}
+.A h3 em{color:var(--a-lake)}
+.A .search{position:relative;margin:0 28px;transform:translateY(40px);background:#fff;border-radius:14px;padding:14px 18px;display:flex;gap:12px;align-items:center;box-shadow:0 18px 40px -20px rgba(14,42,59,.5);max-width:560px;color:#6b8089;font-size:15px}
+.A .search b{margin-left:auto;background:var(--a-ink);color:#fff;font-weight:600;padding:8px 16px;border-radius:9px;font-size:14px}
+.A .cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;padding:70px 28px 28px}
+.A .cat{background:#fff;border:1px solid var(--a-mist);border-radius:14px;padding:16px}
+.A .cat small{display:block;color:var(--a-lake);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.A .cat strong{display:block;font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:18px;margin:6px 0 4px}
+.A .cat span{font-size:13px;color:#4d6470}
+.A .feature{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;padding:8px 28px 34px;align-items:center}
+.A .feature h4{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:28px;margin:0 0 8px}
+.A .feature p{margin:0;color:#3f5866;max-width:50ch}
+.A .price{background:var(--a-ink);color:#fff;border-radius:16px;padding:22px;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;align-items:baseline}
+.A .price .n{font-family:"Fraunces",Georgia,serif;font-size:44px;color:var(--a-sun);line-height:1}
+.A .price .t{font-size:14px;color:#c9dbe1}
+@media (max-width:700px){.A .feature{grid-template-columns:1fr}.A nav ul{display:none}}
+
+/* ============ B · SIGNALÉTIQUE CAMPUS ============ */
+.B{--b-ink:#111418;--b-paper:#ffffff;--b-grey:#eef0f2;--b-eat:#0d9a5b;--b-move:#1d5fd6;--b-do:#f06a1d;--b-uni:#7a3ee0;--b-home:#d6336c;font-family:"Archivo",system-ui,sans-serif;background:var(--b-paper);color:var(--b-ink)}
+.B nav{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:3px solid var(--b-ink);flex-wrap:wrap}
+.B .logo{font-weight:900;font-stretch:112%;font-size:20px;letter-spacing:-.01em;text-transform:uppercase}
+.B .logo span{background:var(--b-ink);color:#fff;padding:2px 7px;margin-right:6px}
+.B .lang{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;border:2px solid var(--b-ink);padding:4px 8px}
+.B .hero{display:grid;grid-template-columns:1.3fr 1fr;border-bottom:3px solid var(--b-ink)}
+.B .hero > div{padding:30px 24px}
+.B .hero > div + div{border-left:3px solid var(--b-ink);background:var(--b-grey)}
+.B h3{font-weight:900;font-stretch:80%;text-transform:uppercase;font-size:clamp(40px,7vw,78px);line-height:.9;margin:0 0 14px;letter-spacing:-.01em}
+.B .hero p{margin:0;max-width:44ch;font-size:15px}
+.B .board{font-family:"IBM Plex Mono",monospace;font-size:13px;display:grid;gap:10px}
+.B .board .row{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:#fff;padding:10px 12px;border:2px solid var(--b-ink)}
+.B .line{font-family:"Archivo",sans-serif;font-weight:900;color:#fff;background:var(--b-move);padding:3px 8px;font-size:13px;min-width:36px;text-align:center}
+.B .board h5{margin:0;font-family:"Archivo",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:12px}
+.B .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.B .tile{padding:20px 22px;border-right:3px solid var(--b-ink);border-bottom:3px solid var(--b-ink);display:grid;gap:10px;align-content:start;margin-right:-3px}
+.B .pict{width:44px;height:44px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:20px}
+.B .tile strong{font-weight:800;font-stretch:90%;font-size:19px;text-transform:uppercase}
+.B .tile span{font-size:13px;color:#3d4550}
+.B .facts{display:flex;flex-wrap:wrap;gap:0}
+.B .fact{flex:1 1 180px;padding:18px 22px;border-right:3px solid var(--b-ink);margin-right:-3px}
+.B .fact b{display:block;font-weight:900;font-stretch:80%;font-size:40px;line-height:1}
+.B .fact span{font-family:"IBM Plex Mono",monospace;font-size:12px}
+@media (max-width:700px){.B .hero{grid-template-columns:1fr}.B .hero > div + div{border-left:0;border-top:3px solid var(--b-ink)}}
+
+/* ============ C · CARNET SAVOYARD ============ */
+.C{--c-paper:#fbf8f2;--c-ink:#262019;--c-red:#c8102e;--c-pine:#2f5d50;--c-butter:#f3d36b;--c-sky:#bfe0ea;font-family:"Literata",Georgia,serif;background:var(--c-paper);color:var(--c-ink)}
+.C nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 26px;flex-wrap:wrap}
+.C .logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:22px;display:flex;align-items:center;gap:8px}
+.C .flag{width:22px;height:22px;background:var(--c-red);position:relative;border-radius:4px}
+.C .flag::before,.C .flag::after{content:"";position:absolute;background:#fff}
+.C .flag::before{left:9px;top:3px;width:4px;height:16px}.C .flag::after{left:3px;top:9px;width:16px;height:4px}
+.C nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap;font-family:"Bricolage Grotesque",sans-serif;font-weight:500;font-size:14px}
+.C nav li{padding:6px 12px;border-radius:999px;border:1.5px solid var(--c-ink)}
+.C .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;padding:24px 26px 30px;align-items:center}
+.C h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(36px,6vw,64px);line-height:.95;margin:0 0 14px;letter-spacing:-.02em;text-wrap:balance}
+.C h3 mark{background:var(--c-butter);padding:0 .12em;color:inherit}
+.C .hero p{margin:0;max-width:46ch;font-size:16px}
+.C .stack{position:relative;min-height:240px}
+.C .note{position:absolute;background:#fff;border:1.5px solid var(--c-ink);border-radius:14px;padding:14px 16px;box-shadow:4px 4px 0 var(--c-ink);font-size:14px;max-width:230px}
+.C .note b{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;display:block;font-size:16px}
+.C .n1{top:0;left:6%;transform:rotate(-3deg);background:var(--c-sky)}
+.C .n2{top:86px;right:0;transform:rotate(2.5deg)}
+.C .n3{bottom:0;left:16%;transform:rotate(-1deg);background:var(--c-butter)}
+.C .tag{display:inline-block;background:var(--c-red);color:#fff;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;padding:2px 10px;border-radius:999px;font-size:13px;margin-top:6px}
+.C .chapters{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;padding:0 26px 30px}
+.C .ch{border-top:2px solid var(--c-ink);padding-top:12px}
+.C .ch small{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--c-red);font-size:13px}
+.C .ch strong{display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:21px;margin:2px 0 4px}
+.C .ch span{font-size:14px;color:#55493c}
+.C .tip{margin:0 26px 30px;background:var(--c-pine);color:#f5f1e6;border-radius:18px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+.C .tip b{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;background:var(--c-butter);color:var(--c-ink);border-radius:999px;padding:4px 12px;white-space:nowrap;font-size:13px}
+.C .tip p{margin:0;font-size:15px}
+@media (max-width:700px){.C .hero{grid-template-columns:1fr}.C .stack{min-height:300px}}
+
+/* ============ D · ÉPURÉ PREMIUM ============ */
+.D{--d-paper:#fdfdfc;--d-ink:#101214;--d-grey:#8a9096;--d-line:#e6e8ea;--d-glacier:#4f8fb3;font-family:"Manrope",system-ui,sans-serif;background:var(--d-paper);color:var(--d-ink)}
+.D nav{display:flex;justify-content:space-between;align-items:center;padding:20px 36px;font-size:13px;font-weight:500;gap:16px;flex-wrap:wrap}
+.D nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;color:var(--d-grey);flex-wrap:wrap}
+.D .hero{padding:30px 36px 20px}
+.D .kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--d-grey);font-weight:500}
+.D h3{font-weight:800;font-size:clamp(64px,14vw,168px);line-height:.82;letter-spacing:-.055em;margin:14px 0 0}
+.D h3 span{color:var(--d-glacier)}
+.D .meta{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--d-line);margin:30px 36px 0}
+.D .meta div{padding:16px 16px 16px 0;border-right:1px solid var(--d-line);margin-right:16px}
+.D .meta div:last-child{border-right:0}
+.D .meta b{display:block;font-weight:300;font-size:30px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.D .meta span{font-size:12px;color:var(--d-grey)}
+.D .index{margin:30px 36px 36px;border-top:1px solid var(--d-ink)}
+.D .index a{display:grid;grid-template-columns:60px 1fr auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--d-line);color:inherit;text-decoration:none}
+.D .index a:hover strong{color:var(--d-glacier)}
+.D .index em{font-style:normal;font-size:12px;color:var(--d-grey);font-variant-numeric:tabular-nums}
+.D .index strong{font-weight:500;font-size:24px;letter-spacing:-.02em;transition:color .2s}
+.D .index span{font-size:13px;color:var(--d-grey);text-align:right}
+@media (max-width:700px){.D .meta{grid-template-columns:repeat(2,1fr)}.D .index span{display:none}.D .index a{grid-template-columns:40px 1fr}.D nav ul{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <h1>Four design directions for the Annecy student guide</h1>
+    <p>Each mockup is the guide's homepage, built from real content in your document: CROUS meals, SIBRA buses, Vélonecy, festivals. Pick one, or mix elements from several (for example, the layout of B with the colors of A).</p>
+    <nav class="jump" aria-label="Styles">
+      <a href="#lac">A · Lac &amp; Sommets</a>
+      <a href="#signal">B · Signalétique</a>
+      <a href="#carnet">C · Carnet savoyard</a>
+      <a href="#epure">D · Épuré premium</a>
+    </nav>
+  </header>
+
+  <!-- A -->
+  <section class="style" id="lac">
+    <div class="style-head"><span class="letter">Style A</span><h2>Lac &amp; Sommets</h2></div>
+    <p class="style-desc">Calm and elegant, like a tourism-office site. The lake and the Tournette in the hero, a search bar for quick answers, soft cards. Feels trustworthy and polished.</p>
+    <div class="frame">
+      <div class="bar"><i></i><i></i><i></i><span>guide-annecy-etudiant.fr</span></div>
+      <div class="A">
+        <nav><div class="logo">Annecy <em>étudiant</em></div>
+          <ul><li>Carte</li><li>USMB</li><li>Transports</li><li>Manger</li><li>Sorties</li><li>Logement</li></ul></nav>
+        <div class="hero">
+          <svg viewBox="0 0 1000 220" preserveAspectRatio="none" aria-hidden="true">
+            <polygon points="0,220 120,120 210,170 330,60 430,150 520,90 640,170 760,40 880,140 1000,100 1000,220" fill="#8fb3bf"/>
+            <polygon points="0,220 90,170 200,130 300,190 420,120 560,200 700,110 820,180 940,150 1000,170 1000,220" fill="#5f8e9c"/>
+            <polygon points="740,58 760,40 783,62 770,58 760,66" fill="#fff"/>
+            <polygon points="312,76 330,60 348,78 336,74 328,82" fill="#fff"/>
+          </svg>
+          <div class="hero-text">
+            <div class="eyebrow">Guide de rentrée · USMB Annecy</div>
+            <h3>Ta vie d’étudiant, <em>entre lac et montagnes.</em></h3>
+          </div>
+        </div>
+        <div class="search">Abonnement bus, repas à 1 €, Izly… <b>Chercher</b></div>
+        <div class="cats">
+          <div class="cat"><small>Manger</small><strong>Sans se ruiner</strong><span>Resto U, cafétérias, Izly</span></div>
+          <div class="cat"><small>Bouger</small><strong>Transports</strong><span>Bus SIBRA, TER, parkings</span></div>
+          <div class="cat"><small>Pédaler</small><strong>Vélonecy</strong><span>Dès 13 € par mois</span></div>
+          <div class="cat"><small>Sortir</small><strong>Activités</strong><span>Festivals, cinés, châteaux</span></div>
+        </div>
+        <div class="feature">
+          <div><h4>Le repas à 1 €</h4><p>Depuis mai 2026, tous les étudiants avec une carte étudiante et un compte Izly actif y ont droit, une fois par jour, dans les restos du CROUS.</p></div>
+          <div class="price"><span class="n">1 €</span><span class="t">le repas complet, formule à 6 points</span><span class="n">80 €</span><span class="t">l’abonnement bus SIBRA pour l’année</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="spec">
+      <div class="swatches"><b style="background:#0e2a3b"></b><b style="background:#2b8a9b"></b><b style="background:#dfeaee"></b><b style="background:#f6f9fa"></b><b style="background:#e9b44c"></b></div>
+      <p><strong>Fraunces</strong> (titles) + <strong>Figtree</strong> (text). Alpine navy, lake teal, snow white, a touch of sun yellow.</p>
+    </div>
+    <p class="best"><strong>Best for:</strong> a guide that also impresses parents and the university. Works well with real lake photos.</p>
+  </section>
+
+  <!-- B -->
+  <section class="style" id="signal">
+    <div class="style-head"><span class="letter">Style B</span><h2>Signalétique campus</h2></div>
+    <p class="style-desc">Inspired by transit signs and wayfinding. Each topic has its own color, bold condensed headings, a departure board for bus lines. Very fast to scan, very practical.</p>
+    <div class="frame">
+      <div class="bar"><i></i><i></i><i></i><span>guide-annecy-etudiant.fr</span></div>
+      <div class="B">
+        <nav><div class="logo"><span>74</span>Guide Annecy</div><div class="lang">FR / EN</div></nav>
+        <div class="hero">
+          <div><h3>Arriver.<br>S’installer.<br>Profiter.</h3><p>Tout ce qu’il faut savoir pour ta première année à l’USMB Annecy, classé par besoin.</p></div>
+          <div class="board">
+            <h5>Bus vers le campus</h5>
+            <div class="row"><span class="line">R1</span><span>Gare → Campus</span><span>15–20 min</span></div>
+            <div class="row"><span class="line" style="background:#0d9a5b">4</span><span>Seynod → Campus</span><span>via Bonlieu</span></div>
+            <div class="row"><span class="line" style="background:#f06a1d">5</span><span>Novel → Campus</span><span>direct</span></div>
+            <h5>Heures de pointe : 7h30–9h · 16h30–18h30</h5>
+          </div>
+        </div>
+        <div class="tiles">
+          <div class="tile"><div class="pict" style="background:var(--b-eat)">€</div><strong>Manger</strong><span>Resto U 11h30–13h30. File de gauche = pâtes, plus courte.</span></div>
+          <div class="tile"><div class="pict" style="background:var(--b-move)">→</div><strong>Transports</strong><span>Bus, vélo, train, parking.</span></div>
+          <div class="tile"><div class="pict" style="background:var(--b-uni)">U</div><strong>Vie étudiante</strong><span>Campus, services, Welcome Center.</span></div>
+          <div class="tile"><div class="pict" style="background:var(--b-do)">★</div><strong>Sorties</strong><span>Festivals, cinés, sport.</span></div>
+          <div class="tile"><div class="pict" style="background:var(--b-home)">⌂</div><strong>Logement</strong><span>Crous, budget, conseils.</span></div>
+        </div>
+        <div class="facts">
+          <div class="fact"><b>80 €</b><span>bus SIBRA / an</span></div>
+          <div class="fact"><b>15 €</b><span>Illico Liberté Jeunes / an</span></div>
+          <div class="fact"><b>1 €</b><span>repas CROUS</span></div>
+          <div class="fact"><b>30 min</b><span>Vélonecy gratuites</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="spec">
+      <div class="swatches"><b style="background:#111418"></b><b style="background:#0d9a5b"></b><b style="background:#1d5fd6"></b><b style="background:#7a3ee0"></b><b style="background:#f06a1d"></b><b style="background:#d6336c"></b></div>
+      <p><strong>Archivo</strong> (wide and condensed) + <strong>IBM Plex Mono</strong> for times and prices. Black frame, one color per section.</p>
+    </div>
+    <p class="best"><strong>Best for:</strong> a guide used on a phone while walking around. The color code helps people find a section at once.</p>
+  </section>
+
+  <!-- C -->
+  <section class="style" id="carnet">
+    <div class="style-head"><span class="letter">Style C</span><h2>Carnet savoyard</h2></div>
+    <p class="style-desc">Friendly and student-made, like a travel notebook. Savoy-flag red, sticky-note tips, highlighted words. Feels written by students, for students.</p>
+    <div class="frame">
+      <div class="bar"><i></i><i></i><i></i><span>guide-annecy-etudiant.fr</span></div>
+      <div class="C">
+        <nav><div class="logo"><span class="flag" aria-hidden="true"></span>Le Petit Annécien</div>
+          <ul><li>Manger</li><li>Bouger</li><li>Sortir</li><li>Habiter</li></ul></nav>
+        <div class="hero">
+          <div><h3>Annecy, <mark>mode d’emploi</mark> pour les nouveaux.</h3><p>Les vrais bons plans des étudiants de l’USMB : où manger pour 1 €, comment avoir son vélo, et pourquoi on dit toujours « bonjour » en premier.</p></div>
+          <div class="stack" aria-label="Exemples de conseils">
+            <div class="note n1"><b>Izly d’abord</b>Active ton compte avant ton premier repas. Sinon pas de tarif étudiant.<span class="tag">1 € le repas</span></div>
+            <div class="note n2"><b>Musée-Château</b>Gratuit le 1er dimanche du mois, d’octobre à mai.</div>
+            <div class="note n3"><b>Fondue rule</b>Celui qui perd son pain dans la fondue paie la bouteille.</div>
+          </div>
+        </div>
+        <div class="chapters">
+          <div class="ch"><small>Chapitre 1</small><strong>Manger sans se ruiner</strong><span>Resto U, IUT, Polytech, formule à points</span></div>
+          <div class="ch"><small>Chapitre 2</small><strong>Se déplacer</strong><span>SIBRA, Vélonecy, TER, MAX Jeune</span></div>
+          <div class="ch"><small>Chapitre 3</small><strong>La vie étudiante</strong><span>Campus, assos, savoir-vivre</span></div>
+          <div class="ch"><small>Chapitre 4</small><strong>Idées de sorties</strong><span>Festival d’animation, Retour des alpages</span></div>
+        </div>
+        <div class="tip"><b>Astuce</b><p>Pendant le Festival d’animation en juin, la ville est pleine : réserve tes billets et vérifie les horaires du bus avant de sortir.</p></div>
+      </div>
+    </div>
+    <div class="spec">
+      <div class="swatches"><b style="background:#c8102e"></b><b style="background:#2f5d50"></b><b style="background:#f3d36b"></b><b style="background:#bfe0ea"></b><b style="background:#fbf8f2"></b></div>
+      <p><strong>Bricolage Grotesque</strong> (titles) + <strong>Literata</strong> (text). Savoy red, pine green, butter yellow, sky blue.</p>
+    </div>
+    <p class="best"><strong>Best for:</strong> a guide with lots of personal tips and local culture. Easy to add illustrations or stickers later.</p>
+  </section>
+
+  <!-- D -->
+  <section class="style" id="epure">
+    <div class="style-head"><span class="letter">Style D</span><h2>Épuré premium</h2></div>
+    <p class="style-desc">Minimal and confident, like a design studio or architecture site. Huge type, lots of white space, a clean numbered index. Very professional, little decoration.</p>
+    <div class="frame">
+      <div class="bar"><i></i><i></i><i></i><span>guide-annecy-etudiant.fr</span></div>
+      <div class="D">
+        <nav><strong>Guide Annecy</strong><ul><li>Guide</li><li>Carte</li><li>Sources</li><li>À propos</li></ul></nav>
+        <div class="hero">
+          <div class="kicker">Guide étudiant · Édition 2026–2027</div>
+          <h3>Annecy<span>.</span></h3>
+        </div>
+        <div class="meta">
+          <div><b>4 950</b><span>étudiants sur le campus</span></div>
+          <div><b>15 min</b><span>gare → campus en Rythmo 1</span></div>
+          <div><b>700 €</b><span>budget mensuel en résidence</span></div>
+          <div><b>447 m</b><span>altitude du lac</span></div>
+        </div>
+        <div class="index">
+          <a href="#epure"><em>01</em><strong>Carte</strong><span>Lieux importants, campus, magasins</span></a>
+          <a href="#epure"><em>02</em><strong>USMB &amp; vie étudiante</strong><span>Campus, services, informations utiles</span></a>
+          <a href="#epure"><em>03</em><strong>Transports &amp; vélo</strong><span>Bus, train, Vélonecy, tarifs</span></a>
+          <a href="#epure"><em>04</em><strong>Manger sans se ruiner</strong><span>CROUS, supermarchés, prix</span></a>
+          <a href="#epure"><em>05</em><strong>Idées d’activités</strong><span>Sorties, lieux, bons plans</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="spec">
+      <div class="swatches"><b style="background:#101214"></b><b style="background:#8a9096"></b><b style="background:#e6e8ea"></b><b style="background:#fdfdfc"></b><b style="background:#4f8fb3"></b></div>
+      <p><strong>Manrope</strong> in three weights only. Ink black, warm white, and one glacier-blue accent.</p>
+    </div>
+    <p class="best"><strong>Best for:</strong> the most "serious" and portfolio-ready result. Needs good photos to avoid feeling empty on inner pages.</p>
+  </section>
+</div>
