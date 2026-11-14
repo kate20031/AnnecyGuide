@@ -6,9 +6,10 @@
   if (!I) return;
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
+  function ic(n) { return n ? '<i class="ti ti-' + esc(n) + ' g-ic" aria-hidden="true"></i>' : ''; }
   function stats(s) {
     return '<div class="g-stats">' + s.map(function (x) {
-      return '<div class="g-stat"><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>';
+      return '<div class="g-stat">' + ic(x[2]) + '<b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>';
     }).join('') + '</div>';
   }
   function steps(s) {
@@ -18,12 +19,12 @@
   }
   function list(s) {
     return '<ul class="g-list">' + s.map(function (x) {
-      return '<li><b>' + esc(x.t) + '</b><span>' + esc(x.d) + '</span></li>';
+      return '<li>' + ic(x.i) + '<div><b>' + esc(x.t) + '</b><span>' + esc(x.d) + '</span></div></li>';
     }).join('') + '</ul>';
   }
   function faq(s) {
     return '<div class="g-faq">' + s.map(function (x) {
-      return '<details><summary>' + esc(x.q) + '</summary><div class="g-ans">' +
+      return '<details><summary>' + ic(x.i) + esc(x.q) + '</summary><div class="g-ans">' +
         x.a.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div></details>';
     }).join('') + '</div>';
   }
