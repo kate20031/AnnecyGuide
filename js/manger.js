@@ -46,14 +46,14 @@
     withPhoto(o);
     return '<button type="button" class="tile ' + (o.img ? 'with-photo' : 'with-art') + ' ink-' + (o.ink || 'light') + '" data-detail="' + esc(o.key) + '" style="--c:' + o.color + '" aria-haspopup="dialog">' +
       '<span class="tile-head"><span class="tile-title">' + esc(o.title) + '</span>' + (o.label ? '<span class="tile-label">' + esc(o.label) + '</span>' : '') + freeBadge(o) + '</span>' +
-      (o.img ? '<span class="tile-photo" style="background-image:url(' + o.img + ');background-position:' + (o.pos || 'center') + (o.fit === 'contain' ? ';background-size:contain;background-repeat:no-repeat;background-color:#fff' : '') + '"></span>' : '<span class="tile-art" aria-hidden="true">' + artSvg(o) + '</span>') +
+      (o.img ? '<span class="tile-photo" style="background-image:url(' + o.img + ');background-position:' + (o.pos || 'center') + (o.fit === 'contain' ? ';background-size:contain;background-repeat:no-repeat;background-color:#fff' : '') + '"></span>' : o.big ? '<span class="tile-big" aria-hidden="true">' + esc(o.big) + '</span>' : '<span class="tile-art" aria-hidden="true">' + artSvg(o) + '</span>') +
       '<span class="tile-more" aria-hidden="true">Voir plus</span></button>';
   }
   function coverHTML(o) {
     var art = o.img
       ? '<div class="cover-photo" style="background-image:url(' + o.img + ');background-position:' + (o.pos || 'center') + '"></div>' +
         (o.credit ? '<a class="cover-credit" href="' + esc(o.url) + '" target="_blank" rel="noopener">' + (/^(Affiche|Photo)/.test(o.credit) ? '' : 'Photo : ') + esc(o.credit) + '</a>' : '')
-      : '<div class="cover-art">' + artSvg(o) + '</div>';
+      : o.big ? '<div class="cover-big" aria-hidden="true">' + esc(o.big) + '</div>' : '<div class="cover-art">' + artSvg(o) + '</div>';
     return '<div class="cover ' + (o.img ? 'with-photo' : 'with-art') + ' ink-' + (o.ink || 'light') + '" style="--c:' + o.color + '">' +
       '<div class="cover-head"><h3>' + esc(o.title) + '</h3>' + (o.label ? '<p>' + esc(o.label) + '</p>' : '') + (o.img ? freeBadge(o) : '') + '</div>' + art + (o.img ? '' : freeBadge(o)) + '</div>';
   }
@@ -313,7 +313,7 @@
 
   /* ---------- montage dans la page ---------- */
   /* Outils partagés avec les autres thèmes (js/activites.js) */
-  window.GUIDE = { openMap: openMap, gmapsUrl: gmapsUrl, km: km, fmtDist: fmtDist, campus: D.campus, esc: esc, tileHTML: tileHTML, addDetail: addDetail };
+  window.GUIDE = { openMap: openMap, gmapsUrl: gmapsUrl, km: km, fmtDist: fmtDist, campus: D.campus, esc: esc, tileHTML: tileHTML, coverHTML: coverHTML, addDetail: addDetail };
 
   window.renderManger = function (sections) {
     sections['crous'].innerHTML = bannerHTML('crous') + crousHTML();

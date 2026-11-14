@@ -9,12 +9,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="data/manger-data.js?v=20261114r"></script>
-<script src="data/photos-data.js?v=20261114r"></script>
-<script src="js/icons.js?v=20261114r"></script>
-<script src="js/manger.js?v=20261114r"></script>
-<script src="data/activites-data.js?v=20261114r"></script>
-<script src="js/activites.js?v=20261114r"></script>
+<script src="data/manger-data.js?v=20261115a"></script>
+<script src="data/photos-data.js?v=20261115a"></script>
+<script src="js/icons.js?v=20261115a"></script>
+<script src="js/manger.js?v=20261115a"></script>
+<script src="data/activites-data.js?v=20261115a"></script>
+<script src="js/activites.js?v=20261115a"></script>
+<script src="data/infos-data.js?v=20261115a"></script>
+<script src="js/infos.js?v=20261115a"></script>
 <style>
 /* Layout: sticky chip nav, one topic visible at a time (hash routing), subtopic chips that jump to sections.
    Thème sombre gris-violet avec halos lumineux (un seul thème, choisi). */
@@ -262,6 +264,15 @@ ul.clean li::before{content:"";position:absolute;left:2px;top:.68em;width:7px;he
 .tile-photo{flex:1;background-size:cover;border-top:1px solid var(--edge);min-height:45%}
 .tile-art{position:absolute;right:-4px;bottom:-8px;width:36%;aspect-ratio:1;transform:rotate(-8deg);filter:drop-shadow(2px 2px 0 rgba(38,32,25,.9))}
 .tile-art svg{width:100%;height:100%;display:block}
+/* grand mot ou chiffre (Vie étudiante, Logement) */
+.tile-big{position:absolute;right:12px;bottom:10px;max-width:calc(100% - 100px);text-align:right;font:800 clamp(24px,2.5vw,32px)/1 var(--f-head);letter-spacing:-.03em;overflow-wrap:break-word}
+.tile.ink-light .tile-big{color:#fff}.tile.ink-dark .tile-big{color:#14111f}
+.cover-big{position:absolute;right:18px;bottom:14px;font:800 clamp(40px,7vw,64px)/1 var(--f-head);letter-spacing:-.04em;opacity:.95}
+.cover.ink-light .cover-big{color:#fff}.cover.ink-dark .cover-big{color:#14111f}
+.cover:has(.cover-big){height:190px}
+.info-src{font-size:13.5px;color:var(--soft);margin:0}
+@media (max-width:560px){.tile-big{max-width:none;right:10px;bottom:36px;font-size:22px;white-space:nowrap}.tile:has(.tile-big){min-height:190px}}
+.info-src span{font:700 12px var(--f-head);text-transform:uppercase;letter-spacing:.04em;color:var(--red)}
 .tile-more{position:absolute;left:10px;bottom:9px;font:700 12px var(--f-head);background:var(--paper);color:var(--ink);border:1px solid var(--edge);border-radius:999px;padding:2px 9px;transition:background .15s}
 .tile:hover .tile-more{background:var(--butter)}
 @media (prefers-reduced-motion:reduce){.tile,.tile:hover{transform:none;transition:none}}
@@ -454,8 +465,9 @@ footer{border-top:1px solid var(--line)}
 <script>
 /* ====== EDIT HERE: topics and subtopics of the guide ====== */
 var TOPICS = [
-  { id:"usmb", title:"USMB · Vie étudiante", hl:"La vie étudiante", desc:"Le campus, les services et les infos utiles.",
-    subs:["Campus","Services étudiants","Informations utiles"] },
+  { id:"usmb", title:"USMB · Vie étudiante", hl:"La vie étudiante", desc:"Les études, le budget, l’intégration et les codes de la vie en France et en Savoie.",
+    subs:[ {id:"etudes", t:"Études"}, {id:"budget", t:"Budget et aides"}, {id:"integration", t:"Trouver sa place"}, {id:"savoirvivre", t:"Savoir-vivre"}, {id:"savoie", t:"Culture savoyarde"}, {id:"deplacer", t:"Bouger moins cher"}, {id:"securite", t:"Montagne et lac"} ],
+    custom:"renderUsmb" },
   { id:"transports", title:"Transports", hl:"Se déplacer", desc:"Bus, train et tarifs.",
     subs:["Bus","Train","Tarifs"] },
   { id:"velo", title:"Vélo", hl:"À vélo", desc:"Louer un vélo et circuler en ville.",
@@ -466,8 +478,9 @@ var TOPICS = [
   { id:"activites", title:"Idées d’activités", hl:"Idées d’activités", desc:"Festivals, cinémas, sport, châteaux et spectacles, avec les prix et la distance du campus.",
     subs:[ {id:"festivals", t:"Festivals"}, {id:"cinemas", t:"Cinémas"}, {id:"sport", t:"Sport et plein air"}, {id:"table", t:"Une table avec vue"}, {id:"chateaux", t:"Châteaux"}, {id:"spectacles", t:"Spectacles et expos"}, {id:"conseils", t:"Nos conseils"} ],
     custom:"renderActivites" },
-  { id:"logement", title:"Logement", hl:"Se loger", desc:"Trouver un logement et gérer son budget.",
-    subs:["Résidences étudiantes","Logement privé","Budget"] }
+  { id:"logement", title:"Logement", hl:"Se loger", desc:"Le budget, les aides et nos conseils pour bien vivre seul à Annecy.",
+    subs:[ {id:"budget", t:"Budget"}, {id:"aides", t:"Les aides"}, {id:"seul", t:"Vivre seul"}, {id:"ici", t:"Vivre à Annecy"} ],
+    custom:"renderLogement" }
 ];
 /* ========================================================== */
 

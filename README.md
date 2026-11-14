@@ -39,3 +39,7 @@ Dans `index.html`, change le numéro `?v=...` à la fin de `data/manger-data.js?
 ## Thème « Idées d'activités »
 
 Le contenu est dans `data/activites-data.js`. Chaque activité a une couverture colorée : `cover.color` (la couleur), `cover.ink` (`"light"` pour un titre blanc, `"dark"` pour un titre noir), et soit une photo `cover.img` (dans `images/activites/`, avec `credit` et `url` de la source), soit une illustration `cover.icon` (voir `js/icons.js`). Le code d'affichage est dans `js/activites.js`.
+
+## USMB · Vie étudiante et Logement
+
+Le contenu est dans `data/infos-data.js` (une liste de rubriques pour chaque thème). Chaque fiche a un titre, un mot ou chiffre court en grand sur la vignette (`big`), des paragraphes (`paras`), et les sources (`sources`, des paires [texte, lien]). Le code d'affichage est dans `js/infos.js`. Pour ajouter une rubrique, ajoute-la aussi dans `subs` du thème dans `index.html` (même `id`).
