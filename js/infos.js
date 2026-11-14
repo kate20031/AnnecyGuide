@@ -34,15 +34,24 @@
     }).join(' · ') + '</p>';
   }
 
+  /* Grande photo en haut de la rubrique, comme dans « Manger sans se ruiner » */
+  function banner(s) {
+    var b = s.banner;
+    return '<div class="banner" role="img" aria-label="' + esc(b.caption) + '" style="background-image:url(' + b.img + ');background-position:' + (b.pos || 'center') + '">' +
+      '<a class="banner-credit" href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(b.caption) + ' · Photo : ' + esc(b.credit) + '</a>' +
+      '<div class="banner-txt"><h2>' + esc(s.title) + '</h2>' + (s.sub ? '<p>' + esc(s.sub) + '</p>' : '') + '</div></div>';
+  }
+
   function render(sections) {
     return function (bodies) {
       sections.forEach(function (s) {
         var el = bodies[s.id];
         if (!el) return;
         var h = el.parentNode.querySelector(':scope > h2');
-        if (h) h.textContent = s.title;
-        el.innerHTML = '<div class="guide">' +
-          (s.sub ? '<p class="sub">' + esc(s.sub) + '</p>' : '') +
+        if (h) { h.textContent = s.title; h.hidden = !!s.banner; }
+        if (s.banner) el.parentNode.classList.add('with-banner');
+        el.innerHTML = '<div class="guide">' + (s.banner ? banner(s) :
+          (s.sub ? '<p class="sub">' + esc(s.sub) + '</p>' : '')) +
           (s.stats ? stats(s.stats) : '') +
           (s.steps ? steps(s.steps) : '') +
           (s.list ? list(s.list) : '') +

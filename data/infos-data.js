@@ -7,6 +7,7 @@
      faq      questions importantes (s'ouvrent au clic) : { q: question, i: icône, a: [paragraphes] }
      icône    nom d'une icône Tabler (liste sur https://tabler.io/icons), par ex. 'train'
      sources  liens en bas de la rubrique : [texte, adresse]
+     banner   grande photo en haut (optionnel) : { img, caption, credit, url, pos }
    Règle : les questions (faq) seulement pour ce qui est vraiment important
    (argent, démarches, sécurité). Les faits intéressants vont dans « list ».
    ===================================================================== */
@@ -47,6 +48,7 @@ window.INFOS = {
                 ['Crous Grenoble Alpes', 'https://www.crous-grenoble.fr/']] },
 
     { id: 'integration', title: 'Trouver sa place',
+      banner: { img: 'images/banners/vieille-ville.jpg', caption: 'La vieille ville d’Annecy', credit: 'Guilhem Vellut, CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Canal_@_Vieille_Ville_@_Annecy_(51188581845).jpg', pos: 'center 80%' },
       sub: 'Pour rencontrer du monde et ne pas rester seul les premières semaines.',
       list: [
         { t: 'Le Welcome Center', i: 'door-enter', d: 'L’USMB accueille les étudiants internationaux, organise des événements d’intégration et un programme d’accueil géré par des étudiants.' },
@@ -89,6 +91,7 @@ window.INFOS = {
                 ['Haute-Savoie (Wikivoyage)', 'https://guides.travel.sygic.com/production/en/Haute-Savoie'], ['French Library', 'https://frenchlibrary.org/?p=71832']] },
 
     { id: 'deplacer', title: 'Bouger moins cher',
+      banner: { img: 'images/banners/gare.jpg', caption: 'La gare d’Annecy', credit: 'Hugh Llewelyn, CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Annecy_station_(35466633296).jpg', pos: 'center 60%' },
       sub: 'Les cartes de réduction pour le train et les pièges à éviter.',
       stats: [['15 €', 'par an : −50 % sur les TER (moins de 26 ans)', 'train'], ['49 €', 'la Carte Avantage Jeune : −25 à −50 %', 'discount']],
       faq: [
@@ -107,6 +110,7 @@ window.INFOS = {
                 ['FAQ Léman Express (PDF)', 'https://www.ge.ch/document/16326/telecharger'], ['Sibra', 'https://www.sibra.fr/']] },
 
     { id: 'securite', title: 'Montagne et lac : prudence',
+      banner: { img: 'images/banners/lac-montagne.jpg', caption: 'Le lac d’Annecy vu de la montagne', credit: 'Guilhem Vellut, CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Lac_d%27Annecy_@_Panorama_du_Rocher_du_Roux_@_Talloires-Montmin_(51221414233).jpg', pos: 'center 70%' },
       sub: 'Annecy est magnifique, mais la montagne et le lac demandent de la prudence.',
       faq: [
         { q: 'Je pars en randonnée : quelles précautions ?', i: 'mountain',
@@ -126,6 +130,7 @@ window.INFOS = {
   /* ============================== LOGEMENT ============================== */
   logement: [
     { id: 'etapes', title: 'Trouver un logement, étape par étape',
+      banner: { img: 'images/banners/residence.jpg', caption: 'Une résidence universitaire à Annecy-le-Vieux', credit: 'Guilhem Vellut, CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:R%C3%A9sidence_universitaire_@_Annecy-le-Vieux_(51040410582).jpg', pos: 'center 55%' },
       sub: 'Le budget total d’un mois, puis les démarches dans le bon ordre.',
       stats: [['≈ 700 €', 'par mois en résidence universitaire', 'building'], ['≈ 850 €', 'par mois en studio privé', 'home']],
       steps: [
@@ -164,6 +169,7 @@ window.INFOS = {
       ] },
 
     { id: 'ici', title: 'Conseils pour vivre à Annecy',
+      banner: { img: 'images/banners/annecy-le-vieux.jpg', caption: 'Annecy-le-Vieux', credit: 'Phoenix74, CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:20120325_Annecy-le-Vieux_01.JPG', pos: 'center 60%' },
       sub: 'Ce qui change quand on s’installe ici.',
       note: 'Conseils de l’équipe.',
       list: [
