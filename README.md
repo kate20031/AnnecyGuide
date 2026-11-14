@@ -33,3 +33,7 @@ Photos des bannières et « Le saviez-vous ? » : Wikimedia Commons, licences li
 ## Après une modification
 
 Dans `index.html`, change le numéro `?v=...` à la fin de `data/manger-data.js?v=...` et `js/manger.js?v=...` (par exemple la date du jour). Sinon, les navigateurs peuvent garder l'ancienne version quelques minutes.
+
+## Thème « Idées d'activités »
+
+Le contenu est dans `data/activites-data.js`. Chaque activité a une couverture colorée : `cover.color` (la couleur), `cover.ink` (`"light"` pour un titre blanc, `"dark"` pour un titre noir), et soit une photo `cover.img` (dans `images/activites/`, avec `credit` et `url` de la source), soit une illustration `cover.icon` (voir `js/icons.js`). Le code d'affichage est dans `js/activites.js`.

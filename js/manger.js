@@ -188,7 +188,10 @@
       ? '<b>C’est le point de départ</b> : toutes les distances du guide sont mesurées depuis ici, au cœur du campus.'
       : near
       ? '<b>Sur le campus</b> · à ' + fmtDist(d) + ' du restaurant universitaire'
+      : d > 8
+      ? '<b>' + fmtDist(d) + '</b> à vol d’oiseau du campus USMB · trop loin à pied : prévois une voiture ou le bus'
       : '<b>' + fmtDist(d) + '</b> à vol d’oiseau du campus USMB · environ <b>' + walkMin(d) + ' min à pied</b>' + (d > 2.5 ? ', le bus ou le vélo sont plus rapides' : '');
+    if (p.mapNote) foot.innerHTML += '<br><span style="color:var(--soft)">' + esc(p.mapNote) + '</span>';
     var o = D.campus.lat + ',' + D.campus.lon, t = p.lat + ',' + p.lon;
     dlg.querySelector('.dlg-walk').href = 'https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route=' + o + '%3B' + t;
     dlg.querySelector('.dlg-transit').href = 'https://www.google.com/maps/dir/?api=1&origin=' + o + '&destination=' + t + '&travelmode=transit';
@@ -216,6 +219,9 @@
   }
 
   /* ---------- montage dans la page ---------- */
+  /* Outils partagés avec les autres thèmes (js/activites.js) */
+  window.GUIDE = { openMap: openMap, gmapsUrl: gmapsUrl, km: km, fmtDist: fmtDist, campus: D.campus, esc: esc };
+
   window.renderManger = function (sections) {
     sections['crous'].innerHTML = bannerHTML('crous') + crousHTML();
     sections['restaurants'].innerHTML = bannerHTML('restaurants') + restoShell();
