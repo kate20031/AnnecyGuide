@@ -39,14 +39,14 @@
   /* Photo de la vignette depuis data/photos-data.js (si le lieu n'a pas déjà la sienne) */
   function withPhoto(o) {
     var P = (window.PHOTOS || {})[o.key];
-    if (P && !o.img) { o.img = P.img; o.pos = P.pos || o.pos; o.credit = (P.illus ? 'Photo d’illustration : ' : 'Photo : ') + P.credit; o.url = P.url; }
+    if (P && !o.img) { o.img = P.img; o.pos = P.pos || o.pos; o.fit = P.fit; if (P.credit) { o.credit = (P.illus ? 'Photo d’illustration : ' : 'Photo : ') + P.credit; o.url = P.url; } }
     return o;
   }
   function tileHTML(o) {
     withPhoto(o);
     return '<button type="button" class="tile ' + (o.img ? 'with-photo' : 'with-art') + ' ink-' + (o.ink || 'light') + '" data-detail="' + esc(o.key) + '" style="--c:' + o.color + '" aria-haspopup="dialog">' +
       '<span class="tile-head"><span class="tile-title">' + esc(o.title) + '</span>' + (o.label ? '<span class="tile-label">' + esc(o.label) + '</span>' : '') + freeBadge(o) + '</span>' +
-      (o.img ? '<span class="tile-photo" style="background-image:url(' + o.img + ');background-position:' + (o.pos || 'center') + '"></span>' : '<span class="tile-art" aria-hidden="true">' + artSvg(o) + '</span>') +
+      (o.img ? '<span class="tile-photo" style="background-image:url(' + o.img + ');background-position:' + (o.pos || 'center') + (o.fit === 'contain' ? ';background-size:contain;background-repeat:no-repeat;background-color:#fff' : '') + '"></span>' : '<span class="tile-art" aria-hidden="true">' + artSvg(o) + '</span>') +
       '<span class="tile-more" aria-hidden="true">Voir plus</span></button>';
   }
   function coverHTML(o) {

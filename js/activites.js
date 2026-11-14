@@ -9,14 +9,14 @@
   /* Photos ajoutées dans data/photos-data.js pour les activités qui avaient une illustration */
   A.items.forEach(function (it) {
     var P = (window.PHOTOS || {})['act:' + it.id], c = it.cover = it.cover || {};
-    if (P && !c.img) { c.img = P.img; c.credit = (P.illus ? 'Photo d’illustration : ' : '') + P.credit; c.url = P.url; }
+    if (P && !c.img) { c.img = P.img; c.fit = P.fit; if (P.credit) { c.credit = (P.illus ? 'Photo d’illustration : ' : '') + P.credit; c.url = P.url; } }
   });
 
   function cover(it) {
     var c = it.cover || {};
     var art = '';
     if (c.img) {
-      art = '<div class="cover-photo" style="background-image:url(' + c.img + ');background-position:' + (c.pos || 'center') + '"></div>' +
+      art = '<div class="cover-photo" style="background-image:url(' + c.img + ');background-position:' + (c.pos || 'center') + (c.fit === 'contain' ? ';background-size:contain;background-repeat:no-repeat;background-color:#fff' : '') + '"></div>' +
         (c.credit ? '<a class="cover-credit" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + (/^(Affiche|Photo)/.test(c.credit) ? '' : 'Photo : ') + esc(c.credit) + '</a>' : '');
     } else if (c.icon && window.ICONS && window.ICONS[c.icon]) {
       art = '<div class="cover-art">' + window.ICONS[c.icon].svg + '</div>';
@@ -49,7 +49,7 @@
   function tile(it) {
     var c = it.cover || {};
     window.GUIDE.addDetail('act:' + it.id, function () { return card(it); });
-    return window.GUIDE.tileHTML({ key: 'act:' + it.id, title: it.name, color: c.color || '#2f5d50', ink: c.ink, img: c.img, pos: c.pos, icon: c.icon, free: it.free });
+    return window.GUIDE.tileHTML({ key: 'act:' + it.id, title: it.name, color: c.color || '#2f5d50', ink: c.ink, img: c.img, pos: c.pos, fit: c.fit, icon: c.icon, free: it.free });
   }
 
   window.renderActivites = function (bodies) {
