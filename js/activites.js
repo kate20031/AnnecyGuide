@@ -12,7 +12,7 @@
     var art = '';
     if (c.img) {
       art = '<div class="cover-photo" style="background-image:url(' + c.img + ');background-position:' + (c.pos || 'center') + '"></div>' +
-        (c.credit ? '<a class="cover-credit" href="' + esc(c.url) + '" target="_blank" rel="noopener">Photo : ' + esc(c.credit) + '</a>' : '');
+        (c.credit ? '<a class="cover-credit" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + (/^Affiche/.test(c.credit) ? '' : 'Photo : ') + esc(c.credit) + '</a>' : '');
     } else if (c.icon && window.ICONS && window.ICONS[c.icon]) {
       art = '<div class="cover-art">' + window.ICONS[c.icon].svg + '</div>';
     }

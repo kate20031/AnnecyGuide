@@ -26,21 +26,21 @@ window.ACTIVITES = {
   items: [
     /* ---------- Festivals ---------- */
     { id: 'high-five', sec: 'festivals', name: 'High Five Festival',
-      cover: { color: '#8b5cf6', ink: 'light', icon: 'mountain' },
+      cover: { color: '#8b5cf6', ink: 'light', img: 'images/activites/high-five.jpg', pos: 'center 30%', credit: 'Affiche officielle', url: 'https://highfive-festival.com/' },
       desc: 'Le rendez-vous incontournable des passionnés de ski, de snowboard et de culture montagnarde. Au programme : projections de films, rencontres avec des sportifs, conférences, concerts et animations. Une excellente sortie entre amis.',
       facts: [['Quand', 'Généralement fin septembre ou début octobre, sur un week-end'], ['Où', 'Différents espaces à Annecy, notamment le cinéma Pathé et le village du festival'], ['Prix', 'Variables selon les projections, les activités et les pass']],
       lat: 45.90341, lon: 6.12337, mapNote: 'Lieu principal : cinéma Pathé', gmaps: 'Pathé Annecy, 7 avenue de Brogny, Annecy',
       link: 'https://highfive-festival.com/' },
 
     { id: 'retour-alpages', sec: 'festivals', name: 'Retour des alpages', label: 'La fête des troupeaux',
-      cover: { color: '#ff7a1a', ink: 'light', icon: 'cow' }, free: true,
+      cover: { color: '#ff7a1a', ink: 'light', img: 'images/activites/retour-alpages.jpg', pos: 'center 30%' }, free: true,
       desc: 'Cette fête traditionnelle célèbre la descente des troupeaux des montagnes après l’été. Les rues de la vieille ville accueillent des vaches, des moutons, des artisans, des musiciens et des groupes folkloriques. On y découvre aussi les spécialités de la région et les anciens métiers savoyards.',
       facts: [['Quand', 'Généralement le deuxième samedi d’octobre'], ['Où', 'Vieille ville d’Annecy, dans les rues piétonnes du centre historique'], ['Prix', 'Entièrement gratuit']],
       lat: 45.89840, lon: 6.12489, gmaps: 'Rue Sainte-Claire, Annecy',
       link: 'https://en.lac-annecy.com/event/retour-des-alpages-annecy/' },
 
     { id: 'momiji', sec: 'festivals', name: 'Momiji', label: 'Animation japonaise',
-      cover: { color: '#ef3b3b', ink: 'light', icon: 'leaf' },
+      cover: { color: '#ef3b3b', ink: 'light', img: 'images/activites/momiji.jpg', pos: 'center 42%', credit: 'Affiche officielle', url: 'https://www.auditoriumseynod.com/theme/momiji-28032/?lang=fr' },
       desc: 'Un week-end consacré à la culture et au cinéma d’animation japonais : films d’animation, classiques japonais, séances spéciales et ateliers (dessin manga, origami, mini-jardins zen). Une sortie originale pour les amateurs de mangas.',
       facts: [['Quand', 'Généralement en octobre, autour des vacances d’automne'], ['Où', 'Auditorium de Seynod, 1 place de l’Hôtel-de-Ville, 74600 Annecy'], ['Accès', 'En bus depuis le centre-ville']],
       lists: { 'Tarifs indicatifs': ['Un film : 5 €', 'Junk Night : 8 €', 'Pass journée : 12 €', 'Pass week-end : 20 €'] },
@@ -48,7 +48,7 @@ window.ACTIVITES = {
       link: 'https://www.auditoriumseynod.com/theme/momiji-28032/?lang=fr' },
 
     { id: 'annecy-festival', sec: 'festivals', name: 'Annecy Festival', label: 'Le festival du film d’animation',
-      cover: { color: '#19b8e0', ink: 'light', img: 'images/activites/festival.jpg', credit: 'Guilhem Vellut, CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Annecy_International_Animated_Film_Festival_@_Bonlieu_@_Annecy_(35502413515).jpg' },
+      cover: { color: '#19b8e0', ink: 'light', img: 'images/activites/annecy-festival-affiche.jpg', pos: 'center 24%', credit: 'Affiche officielle 2026', url: 'https://www.annecyfestival.com/' },
       desc: 'L’un des plus grands festivals d’animation au monde. Pendant une semaine : projections, avant-premières, expositions, rencontres avec des professionnels et séances en plein air. Idéal pour les passionnés de cinéma, de dessin et de création numérique.',
       facts: [['Quand', 'Généralement en juin, pendant environ une semaine'], ['Où', 'Bonlieu, le cinéma Pathé, la salle Pierre Lamy et le Pâquier (plein air)']],
       lists: { 'Tarifs indicatifs': ['Accréditations : selon la formule et la date d’achat', 'Billets individuels : selon les séances', 'Certaines animations et projections en plein air sont gratuites'] },
@@ -95,7 +95,7 @@ window.ACTIVITES = {
 
     /* ---------- Table avec vue ---------- */
     { id: 'balcon-du-lac', sec: 'table', name: 'Le Balcon du Lac', label: 'Col de la Forclaz',
-      cover: { color: '#b8f56a', ink: 'dark', img: 'images/activites/forclaz.jpg', credit: 'TheHuntsmanMovie, CC0', url: 'https://commons.wikimedia.org/wiki/File:Lac_d%27Annecy_vu_depuis_le_Col_de_la_Forclaz.jpg' },
+      cover: { color: '#b8f56a', ink: 'dark', img: 'images/activites/balcon-du-lac.jpg', pos: 'center 55%' },
       desc: 'Au col de la Forclaz, à environ 1 157 m d’altitude, ce restaurant-brasserie offre une vue panoramique sur le lac et les montagnes. Cuisine française traditionnelle et spécialités savoyardes au fromage. Depuis la grande terrasse, on regarde décoller les parapentes.',
       facts: [['Adresse', '2299 route de Talloires, Col de la Forclaz, 74210 Talloires-Montmin'], ['Budget', 'Environ 20 à 40 € par personne'], ['Téléphone', '04 50 60 70 24']],
       lists: {
