@@ -290,6 +290,25 @@ window.MANGER = {
       note: "Coffee shop d'inspiration australienne avec une cuisine généreuse." }
   ],
 
+  /* ---------------- PRODUITS DE LA FERME ---------------- */
+  farm: {
+    id: "douceurs-ferme",
+    name: "Aux Douceurs de la Ferme",
+    kind: "Distributeurs de la ferme",
+    address: "Route de Thônes, 74940 Annecy-le-Vieux",
+    lat: 45.9213789, lon: 6.1685995,
+    gmaps: "GAEC Aux Douceurs De La Ferme, Annecy-le-Vieux",
+    intro: "Des produits laitiers frais, directement de la ferme, à environ 1 km du campus.",
+    desc: [
+      "Un distributeur automatique de produits laitiers de la ferme, installé à quelques mètres de l’exploitation. On y trouve du lait frais, des desserts lactés, des yaourts et des œufs.",
+      "Juste à côté, un autre distributeur vend des glaces fermières en pots, dans plusieurs parfums. La préférée des clients, c’est la vanille : elle a même été récompensée il y a quelques années lors d’un concours à Lyon."
+    ],
+    facts: [["Horaires", "Ouvert 24 h/24, 7 j/7"], ["Paiement", "Carte bancaire ou espèces"], ["Distance", "Environ 1 km du campus"]],
+    products: ["Lait frais", "Yaourts", "Desserts lactés", "Œufs", "Glaces en pots"],
+    photo: { src: "images/ferme/automates.jpg", alt: "Les distributeurs de produits de la ferme sous un abri en bois", caption: "Les distributeurs de la ferme : lait, yaourts, desserts, œufs et glaces." },
+    video: { src: "videos/ferme.mp4", caption: "Quand il fait beau, on peut parfois voir les chèvres paître à côté de la ferme. Et la vue sur les montagnes vaut aussi le détour !" }
+  },
+
   /* ---------------- SUPERMARCHÉS ---------------- */
   supermarkets: [
     { id: "intermarche", name: "Intermarché Super", group: "campus", area: "Annecy-le-Vieux",

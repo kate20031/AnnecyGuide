@@ -101,6 +101,14 @@
       '<path d="M6 28h52l-6 26H12z" fill="#e8a33d" ' + S + '/>' +
       '<path d="M18 34v14M26 34v14M34 34v14M42 34v14M10 41h44" stroke="#6b3b22" stroke-width="2.5" stroke-linecap="round"/>') },
 
+    farm: { bg: '#d9ebe0', svg: svg(
+      '<path d="M18 6h14v8l4 8v32c0 3-2 5-5 5H19c-3 0-5-2-5-5V22l4-8z" fill="#fff" ' + S + '/>' +
+      '<rect x="17" y="3" width="16" height="6" rx="2" fill="#2f5d50" ' + S + '/>' +
+      '<path d="M14 30h22v14H14z" fill="#bfe0ea" ' + S + '/>' +
+      '<path d="M19 37c2-3 4-3 6 0s4 3 6 0" fill="none" stroke="#262019" stroke-width="2.2" stroke-linecap="round"/>' +
+      '<ellipse cx="48" cy="48" rx="10" ry="12" fill="#f6e2b3" ' + S + '/>' +
+      '<path d="M44 44l3 1" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>') },
+
     /* --- activités --- */
     mountain: { bg: '#e7e0f3', svg: svg(
       '<path d="M2 54 L22 20 L32 34 L42 16 L62 54 Z" fill="#5f9fb8" ' + S + '/>' +

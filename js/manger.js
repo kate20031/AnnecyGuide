@@ -54,6 +54,7 @@
   var ALL = {};
   function reg(kind, arr) { arr.forEach(function (p) { ALL[kind + ':' + p.id] = p; }); }
   reg('crous', D.crous); reg('resto', D.restaurants); reg('coffee', D.coffee); reg('market', D.supermarkets);
+  if (D.farm) reg('farm', [D.farm]);
 
   /* ---------- 1. CROUS ---------- */
   function crousHTML() {
@@ -171,6 +172,28 @@
         '<span class="credit">Photo : <a href="https://commons.wikimedia.org/wiki/File:Emplacement_historique_1er_supermarch%C3%A9_Carrefour,_Annecy_(France)_NB.jpg" target="_blank" rel="noopener">Gnrc, CC BY-SA 4.0</a></span></figcaption></figure>';
   }
 
+  /* ---------- 5. PRODUITS DE LA FERME ---------- */
+  function farmHTML() {
+    var f = D.farm;
+    if (!f) return '';
+    var facts = f.facts.map(function (x) { return '<div><dt>' + esc(x[0]) + '</dt><dd>' + esc(x[1]) + '</dd></div>'; }).join('');
+    return '<p class="sub">' + esc(f.intro) + '</p>' +
+      '<article class="place farm has-sticker">' + sticker('farm') +
+        '<figure class="farm-photo"><img src="' + esc(f.photo.src) + '" alt="' + esc(f.photo.alt) + '" loading="lazy"><figcaption>' + esc(f.photo.caption) + '</figcaption></figure>' +
+        '<div class="farm-grid">' +
+          '<div class="farm-info">' +
+            '<div class="tags"><span class="tag pine">' + esc(f.kind) + '</span><span class="tag">24 h/24</span></div>' +
+            '<h4>' + esc(f.name) + '</h4><p class="meta">' + esc(f.address) + '</p>' +
+            f.desc.map(function (p) { return '<p class="note-line">' + esc(p) + '</p>'; }).join('') +
+            dishes(f.products, 'On y trouve') +
+            '<dl class="facts">' + facts + '</dl>' +
+            '<div class="place-foot">' + distChip(f) + actions(f, 'farm') + '</div>' +
+          '</div>' +
+          '<figure class="farm-video"><video controls muted loop playsinline preload="metadata" src="' + esc(f.video.src) + '#t=1.5"></video><figcaption>' + esc(f.video.caption) + '</figcaption></figure>' +
+        '</div>' +
+      '</article>';
+  }
+
   /* ---------- carte (fenêtre) ---------- */
   var dlg, map, layer;
   function openMap(p) {
@@ -227,7 +250,9 @@
     sections['restaurants'].innerHTML = bannerHTML('restaurants') + restoShell();
     sections['coffee'].innerHTML = bannerHTML('coffee') + coffeeHTML();
     sections['supermarches'].innerHTML = bannerHTML('supermarches') + marketHTML();
+    if (sections['ferme']) sections['ferme'].innerHTML = farmHTML();
     Object.keys(sections).forEach(function (k) {
+      if (!BANNERS[k]) return;
       var sec = sections[k].parentNode, h = sec.querySelector(':scope > h2');
       if (h) h.hidden = true;
       sec.classList.add('with-banner');
