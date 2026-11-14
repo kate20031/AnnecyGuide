@@ -30,6 +30,8 @@ Chaque lieu a un bouton « Photos sur Google Maps » qui ouvre sa fiche Google M
 
 Photos des bannières et « Le saviez-vous ? » : Wikimedia Commons, licences libres (auteur et licence affichés sur chaque photo). Les illustrations des cartes sont dans `js/icons.js` (une par catégorie).
 
+Photos des vignettes (restaurants, coffee shops, supermarchés, lieux du Crous et certaines activités) : `data/photos-data.js`, une ligne par lieu avec le fichier, l'auteur, la licence et le lien Wikimedia Commons. `illus: true` signifie « photo d'illustration » (un plat ou un type de magasin, pas le lieu lui-même) : c'est écrit sur la photo. Les fichiers sont dans `images/plats/`, `images/cafes/`, `images/courses/`, `images/crous/` et `images/activites/`.
+
 ## Après une modification
 
 Dans `index.html`, change le numéro `?v=...` à la fin de `data/manger-data.js?v=...` et `js/manger.js?v=...` (par exemple la date du jour). Sinon, les navigateurs peuvent garder l'ancienne version quelques minutes.

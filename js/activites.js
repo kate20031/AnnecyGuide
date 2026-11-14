@@ -6,13 +6,18 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   var BY_ID = {};
   A.items.forEach(function (it) { BY_ID[it.id] = it; });
+  /* Photos ajoutées dans data/photos-data.js pour les activités qui avaient une illustration */
+  A.items.forEach(function (it) {
+    var P = (window.PHOTOS || {})['act:' + it.id], c = it.cover = it.cover || {};
+    if (P && !c.img) { c.img = P.img; c.credit = (P.illus ? 'Photo d’illustration : ' : '') + P.credit; c.url = P.url; }
+  });
 
   function cover(it) {
     var c = it.cover || {};
     var art = '';
     if (c.img) {
       art = '<div class="cover-photo" style="background-image:url(' + c.img + ');background-position:' + (c.pos || 'center') + '"></div>' +
-        (c.credit ? '<a class="cover-credit" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + (/^Affiche/.test(c.credit) ? '' : 'Photo : ') + esc(c.credit) + '</a>' : '');
+        (c.credit ? '<a class="cover-credit" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + (/^(Affiche|Photo)/.test(c.credit) ? '' : 'Photo : ') + esc(c.credit) + '</a>' : '');
     } else if (c.icon && window.ICONS && window.ICONS[c.icon]) {
       art = '<div class="cover-art">' + window.ICONS[c.icon].svg + '</div>';
     }
