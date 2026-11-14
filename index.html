@@ -236,7 +236,7 @@ ul.clean li::before{content:"";position:absolute;left:2px;top:.68em;width:7px;he
 /* ferme */
 .place.farm{padding:0;overflow:visible}
 .farm-photo{margin:0;border-bottom:1px solid var(--edge)}
-.farm-photo img{display:block;width:100%;height:auto;border-radius:14px 14px 0 0}
+.farm-photo img{display:block;width:100%;height:clamp(190px,30vw,300px);object-fit:cover;object-position:center 28%;border-radius:14px 14px 0 0}
 .farm-photo .photo-credit{font-style:normal;font-size:12.5px;white-space:nowrap}
 .farm-photo figcaption{font-size:13.5px;color:var(--soft);font-style:italic;padding:8px 20px 0}
 .farm-grid{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:22px;padding:18px 20px 20px;align-items:start}
