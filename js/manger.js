@@ -135,7 +135,7 @@
     }
     var tiles = D.crous.map(function (p, i) {
       var c = p.main ? ['#c8102e', 'light'] : pop(i + 1);
-      var o = { key: 'crous:' + p.id, title: p.name, label: p.kind, color: c[0], ink: c[1], img: p.main && p.figure ? p.figure.src : '', pos: 'center 40%', icon: /caf/i.test(p.kind) ? 'coffee' : 'bistrot' };
+      var o = { key: 'crous:' + p.id, title: p.name, label: p.kind, color: c[0], ink: c[1], icon: /caf/i.test(p.kind) ? 'coffee' : 'bistrot' };
       addDetail(o.key, function () { return withDetailCover(o, crousCard(p)); });
       return tileHTML(o);
     }).join('');

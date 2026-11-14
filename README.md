@@ -30,7 +30,7 @@ Chaque lieu a un bouton « Photos sur Google Maps » qui ouvre sa fiche Google M
 
 Photos des bannières et « Le saviez-vous ? » : Wikimedia Commons, licences libres (auteur et licence affichés sur chaque photo). Les illustrations des cartes sont dans `js/icons.js` (une par catégorie).
 
-Photos des vrais lieux sur les vignettes (lieux du Crous, Pathé, Les Carrés) : `data/photos-data.js`, une ligne par lieu avec le fichier, l'auteur, la licence et le lien Wikimedia Commons. Les restaurants, coffee shops et supermarchés n'ont pas de photo : leur vignette garde l'illustration, et le bouton « Photos sur Google Maps » de la fiche montre les vraies photos.
+Photos des vrais lieux sur les vignettes d'activités (Pathé, Les Carrés) : `data/photos-data.js`, une ligne par lieu avec le fichier, l'auteur, la licence et le lien Wikimedia Commons. Les vignettes de « Manger sans se ruiner » n'ont pas de photo : leur vignette garde l'illustration, et le bouton « Photos sur Google Maps » de la fiche montre les vraies photos.
 
 ## Après une modification
 
