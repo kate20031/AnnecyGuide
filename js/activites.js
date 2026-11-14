@@ -31,9 +31,9 @@
     var photos = G ? '<a class="gphotos" href="' + G.gmapsUrl({ name: it.name, address: '', gmaps: it.gmaps }) + '" target="_blank" rel="noopener">Photos sur Google Maps</a>' : '';
     return '<article class="act" id="act-' + it.id + '">' + cover(it) +
       '<div class="act-body">' +
-        '<p class="act-desc">' + esc(it.desc) + '</p>' +
+        [].concat(it.desc || []).map(function (p) { return '<p class="act-desc">' + esc(p) + '</p>'; }).join('') +
         (facts ? '<dl class="act-facts">' + facts + '</dl>' : '') + lists +
-        (it.tip ? '<div class="tip"><b>Astuce</b><p>' + esc(it.tip) + '</p></div>' : '') +
+        (it.tip ? '<div class="tip"><b>' + esc(it.tipLabel || 'Astuce') + '</b><p>' + esc(it.tip) + '</p></div>' : '') +
         '<div class="act-foot">' + dist + '<div class="actions">' + photos +
           '<button type="button" class="map-btn" data-act="' + it.id + '">Voir sur la carte</button></div></div>' +
         (it.link ? '<a class="act-link" href="' + esc(it.link) + '" target="_blank" rel="noopener">Site officiel →</a>' : '') +
@@ -48,14 +48,14 @@
       if (h) h.textContent = s.title;
       var items = A.items.filter(function (it) { return it.sec === s.id; });
       body.innerHTML = (s.sub ? '<p class="sub">' + esc(s.sub) + '</p>' : '') +
-        '<div class="act-grid">' + items.map(card).join('') + '</div>' +
-        (s.id === 'cinemas' && A.cinemasLink ? '<p class="src-line">Tous les cinémas de la région, pour comparer les programmes : <a href="' + A.cinemasLink + '" target="_blank" rel="noopener">Office de tourisme du lac d’Annecy</a></p>' : '');
+        (s.note ? '<p class="sec-note">' + esc(s.note) + '</p>' : '') +
+        '<div class="act-grid">' + items.map(card).join('') + '</div>';
     });
     if (bodies.conseils) {
       var h = bodies.conseils.parentNode.querySelector(':scope > h2');
       if (h) h.textContent = 'Nos conseils pour les étudiants';
-      bodies.conseils.innerHTML = '<p class="sub">Pour profiter d’Annecy sans vider son compte.</p><div class="note butter tips-note"><ul class="clean">' +
-        A.tips.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
+      bodies.conseils.innerHTML = '<p class="sub">' + esc(A.tipsIntro || '') + '</p><div class="note butter tips-note"><ul class="clean">' +
+        A.tips.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></div>'; /* texte de confiance (fichier de données), peut contenir un lien */
     }
     document.addEventListener('click', function (e) {
       var b = e.target.closest('.map-btn[data-act]');
