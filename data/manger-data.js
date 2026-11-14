@@ -301,10 +301,10 @@ window.MANGER = {
     intro: "Des produits laitiers frais, directement de la ferme, à environ 1 km du campus.",
     desc: [
       "Un distributeur automatique de produits laitiers de la ferme, installé à quelques mètres de l’exploitation. On y trouve du lait frais, des desserts lactés, des yaourts et des œufs.",
-      "Juste à côté, un autre distributeur vend des glaces fermières en pots, dans plusieurs parfums. La préférée des clients, c’est la vanille : elle a même été récompensée il y a quelques années lors d’un concours à Lyon."
+      "Juste à côté, un autre distributeur vend des glaces fermières en grands bacs en plastique, dans plusieurs parfums. La préférée des clients, c’est la vanille : elle a même été récompensée il y a quelques années lors d’un concours à Lyon."
     ],
     facts: [["Horaires", "Ouvert 24 h/24, 7 j/7"], ["Paiement", "Carte bancaire ou espèces"], ["Distance", "Environ 1 km du campus"]],
-    products: ["Lait frais", "Yaourts", "Desserts lactés", "Œufs", "Glaces en pots"],
+    products: ["Lait frais", "Yaourts", "Desserts lactés", "Œufs", "Glaces en grands bacs"],
     photo: { src: "images/ferme/automates.jpg", alt: "Les distributeurs de produits de la ferme sous un abri en bois", caption: "Les distributeurs de la ferme : lait, yaourts, desserts, œufs et glaces." },
     video: { src: "videos/ferme.mp4", caption: "Quand il fait beau, on peut parfois voir les chèvres paître à côté de la ferme. Et la vue sur les montagnes vaut aussi le détour !" }
   },
