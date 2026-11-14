@@ -370,7 +370,8 @@ ul.clean li::before{background:var(--violet-2);box-shadow:0 0 8px rgba(167,139,2
 .seg button{background:rgba(255,255,255,.03);color:#d9d3ee;border-color:var(--edge)}
 .seg button[aria-pressed="true"]{background:#6d28d9;border-color:#8b5cf6;color:#fff}
 .fact{background:var(--card-2);border-color:var(--edge)}
-.banner{border-color:var(--edge);box-shadow:var(--shadow)}
+.banner{border:0;box-shadow:var(--shadow)}
+.banner::before{inset:-1px}
 .banner::before{background:linear-gradient(rgba(12,10,18,0) 25%,rgba(12,10,18,.88))}
 .sticker{border-color:rgba(0,0,0,.4)}
 .act{background:var(--card-2)}
