@@ -81,7 +81,7 @@
   /* Photos d'Annecy en tête de chaque rubrique (Wikimedia Commons, licences libres) */
   var BANNERS = {
     crous: { img: 'images/banners/crous.jpg', title: 'Manger au Crous', text: 'Le repas à 1 €, la formule à points et les quatre lieux du campus d’Annecy-le-Vieux.',
-      caption: 'La cafétéria de l’IUT d’Annecy', credit: 'Guilhem Vellut, CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Cafeteria_@_IUT_Annecy_-_Universit%C3%A9_Savoie_Mont-Blanc_@_University_campus_@_Annecy-le-Vieux_(50175763733).jpg' },
+      caption: 'Le campus d’Annecy-le-Vieux', credit: 'IAE Savoie Mont Blanc, CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:IAE_Savoie_Mont-blanc_campus_Annecy-le-Vieux.JPG', pos: 'center 62%' },
     restaurants: { img: 'images/banners/restaurants.jpg', title: 'Restaurants et cafés', text: D.restaurants.length + ' adresses, du ramen au burger, pour tous les budgets.',
       caption: 'Le canal du Thiou et ses terrasses', credit: 'Guilhem Vellut, CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Canal_@_Thiou_@_Old_Town_@_Annecy_(37040038082).jpg' },
     coffee: { img: 'images/banners/coffee.jpg', title: 'Coffee shops', text: 'Café de spécialité, brunch et coins calmes pour travailler, surtout dans la vieille ville.',
