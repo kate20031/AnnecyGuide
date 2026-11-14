@@ -305,7 +305,8 @@ window.MANGER = {
     ],
     facts: [["Horaires", "Ouvert 24 h/24, 7 j/7"], ["Paiement", "Carte bancaire ou espèces"], ["Distance", "Environ 1 km du campus"]],
     products: ["Lait frais", "Yaourts", "Desserts lactés", "Œufs", "Glaces en grands bacs"],
-    photo: { src: "images/ferme/automates.jpg", alt: "Les distributeurs de produits de la ferme sous un abri en bois", caption: "Les distributeurs de la ferme : lait, yaourts, desserts, œufs et glaces." },
+    photo: { src: "images/ferme/casiers.jpg", alt: "Les casiers en libre-service de la ferme Aux Douceurs de la Ferme, avec yaourts et desserts", caption: "Les casiers en libre-service : lait, yaourts, desserts lactés et œufs.",
+      credit: "Photo : un contributeur Google Maps", creditUrl: "https://maps.google.com/maps/contrib/102321726406498466362" },
     video: { src: "videos/ferme.mp4", caption: "Quand il fait beau, on peut parfois voir les chèvres paître à côté de la ferme. Et la vue sur les montagnes vaut aussi le détour !" }
   },
 

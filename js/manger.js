@@ -248,7 +248,8 @@
     var facts = f.facts.map(function (x) { return '<div><dt>' + esc(x[0]) + '</dt><dd>' + esc(x[1]) + '</dd></div>'; }).join('');
     return '<p class="sub">' + esc(f.intro) + '</p>' +
       '<article class="place farm has-sticker">' + sticker('farm') +
-        '<figure class="farm-photo"><img src="' + esc(f.photo.src) + '" alt="' + esc(f.photo.alt) + '" loading="lazy"><figcaption>' + esc(f.photo.caption) + '</figcaption></figure>' +
+        '<figure class="farm-photo"><img src="' + esc(f.photo.src) + '" alt="' + esc(f.photo.alt) + '" loading="lazy"><figcaption>' + esc(f.photo.caption) +
+          (f.photo.credit ? ' <a class="photo-credit" href="' + esc(f.photo.creditUrl) + '" target="_blank" rel="noopener">' + esc(f.photo.credit) + '</a>' : '') + '</figcaption></figure>' +
         '<div class="farm-grid">' +
           '<div class="farm-info">' +
             '<div class="tags"><span class="tag pine">' + esc(f.kind) + '</span><span class="tag">24 h/24</span></div>' +
