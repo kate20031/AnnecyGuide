@@ -9,11 +9,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="data/manger-data.js?v=20261114h"></script>
-<script src="js/icons.js?v=20261114h"></script>
-<script src="js/manger.js?v=20261114h"></script>
-<script src="data/activites-data.js?v=20261114h"></script>
-<script src="js/activites.js?v=20261114h"></script>
+<script src="data/manger-data.js?v=20261114i"></script>
+<script src="js/icons.js?v=20261114i"></script>
+<script src="js/manger.js?v=20261114i"></script>
+<script src="data/activites-data.js?v=20261114i"></script>
+<script src="js/activites.js?v=20261114i"></script>
 <style>
 /* Layout: travel-notebook guide template. Sticky chip nav, one topic visible at a time (hash routing), subtopic chips that jump to sections. Single light "paper" theme by choice. */
 :root{
@@ -239,6 +239,41 @@ ul.clean li::before{content:"";position:absolute;left:2px;top:.68em;width:7px;he
 .farm-video figcaption{font-size:14.5px;margin-top:8px}
 @media (max-width:760px){.farm-grid{grid-template-columns:1fr}.farm-video{max-width:320px;justify-self:center}}
 
+/* vignettes cliquables (titre + photo ou illustration) */
+.tiles{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));margin:0 0 8px}
+.tile{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;aspect-ratio:4/3.3;min-width:0;background:var(--c);border:1.5px solid var(--ink);border-radius:14px;overflow:hidden;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.tile:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.tile:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.tile-head{display:block;padding:11px 12px 9px;position:relative;z-index:1}
+.tile.ink-light .tile-head{color:#fff}
+.tile.ink-dark .tile-head{color:var(--ink)}
+.tile-title{display:block;font:800 clamp(18px,1.7vw,22px)/1 var(--f-head);text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance;overflow-wrap:anywhere}
+.tile-label{display:block;font:700 12.5px/1.25 var(--f-head);margin-top:5px}
+.tile-head .cover-free{position:static;display:inline-block;margin-top:6px;font-size:12px;padding:2px 9px}
+.tile.with-art .tile-head{max-width:70%}
+.tile-photo{flex:1;background-size:cover;border-top:1.5px solid var(--ink);min-height:45%}
+.tile-art{position:absolute;right:-4px;bottom:-8px;width:40%;aspect-ratio:1;transform:rotate(-8deg);filter:drop-shadow(2px 2px 0 rgba(38,32,25,.9))}
+.tile-art svg{width:100%;height:100%;display:block}
+.tile-more{position:absolute;left:10px;bottom:9px;font:700 12px var(--f-head);background:var(--paper);color:var(--ink);border:1.5px solid var(--ink);border-radius:999px;padding:2px 9px;transition:background .15s}
+.tile:hover .tile-more{background:var(--butter)}
+@media (prefers-reduced-motion:reduce){.tile,.tile:hover{transform:none;transition:none}}
+@media (max-width:560px){.tiles{gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}.tile{aspect-ratio:auto;min-height:168px}.tile-title{font-size:16px}.tile-label{font-size:11.5px}.tile-more{font-size:11px}}
+
+/* fenêtre de détail (fiche complète d'une vignette) */
+#detail-dialog{border:1.5px solid var(--ink);border-radius:18px;padding:0;width:min(640px,calc(100vw - 24px));max-height:calc(100dvh - 24px);background:var(--card);color:var(--ink);box-shadow:6px 6px 0 var(--ink);overflow:auto;overscroll-behavior:contain}
+#detail-dialog::backdrop{background:rgba(38,32,25,.45)}
+.detail-bar{position:sticky;top:0;height:0;display:flex;justify-content:flex-end;align-items:flex-start;z-index:3}
+.detail-bar .dlg-close{margin:12px 12px 0;color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
+.detail-body .act,.detail-body .place{border:0;box-shadow:none;border-radius:0;margin:0}
+.detail-body .cover{height:240px}
+.detail-body .cover-head{padding-right:100px}
+.detail-body .sticker,.detail-body .pname{display:none}
+.detail-body .place.has-sticker > .tags{padding-right:0}
+.detail-body .place{padding:18px 20px 22px}
+.detail-body .place-head{display:block}
+.detail-body .place-head .actions{margin-top:10px}
+@media (max-width:560px){.detail-body .cover{height:200px}}
+
 /* map dialog */
 #map-dialog{border:1.5px solid var(--ink);border-radius:18px;padding:0;width:min(720px,calc(100vw - 24px));max-height:calc(100dvh - 24px);background:var(--card);color:var(--ink);box-shadow:6px 6px 0 var(--ink)}
 #map-dialog::backdrop{background:rgba(38,32,25,.45)}
@@ -299,6 +334,11 @@ footer .inner{display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-be
     </section>
   </div>
 </main>
+
+<dialog id="detail-dialog" aria-label="Détails">
+  <div class="detail-bar"><button type="button" class="dlg-close">Fermer</button></div>
+  <div class="detail-body"></div>
+</dialog>
 
 <dialog id="map-dialog" aria-labelledby="dlg-title">
   <div class="dlg-head"><div><h2 class="dlg-title" id="dlg-title"></h2><p class="dlg-addr"></p></div><button type="button" class="dlg-close">Fermer</button></div>

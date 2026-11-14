@@ -32,6 +32,45 @@
     return I ? '<div class="sticker" style="background:' + I.bg + '">' + I.svg + '</div>' : '';
   }
 
+  /* ---------- vignettes cliquables + fenêtre de détail (partagées avec js/activites.js) ---------- */
+  /* o = { key, title, label, color, ink, img, pos, icon, credit, url, free } */
+  function artSvg(o) { var I = o.icon && (window.ICONS || {})[o.icon]; return I ? I.svg : ''; }
+  function freeBadge(o) { return o.free ? '<span class="cover-free">' + (o.free === true ? 'Gratuit' : esc(o.free)) + '</span>' : ''; }
+  function tileHTML(o) {
+    return '<button type="button" class="tile ' + (o.img ? 'with-photo' : 'with-art') + ' ink-' + (o.ink || 'light') + '" data-detail="' + esc(o.key) + '" style="--c:' + o.color + '" aria-haspopup="dialog">' +
+      '<span class="tile-head"><span class="tile-title">' + esc(o.title) + '</span>' + (o.label ? '<span class="tile-label">' + esc(o.label) + '</span>' : '') + freeBadge(o) + '</span>' +
+      (o.img ? '<span class="tile-photo" style="background-image:url(' + o.img + ');background-position:' + (o.pos || 'center') + '"></span>' : '<span class="tile-art" aria-hidden="true">' + artSvg(o) + '</span>') +
+      '<span class="tile-more" aria-hidden="true">Voir plus</span></button>';
+  }
+  function coverHTML(o) {
+    var art = o.img
+      ? '<div class="cover-photo" style="background-image:url(' + o.img + ');background-position:' + (o.pos || 'center') + '"></div>' +
+        (o.credit ? '<a class="cover-credit" href="' + esc(o.url) + '" target="_blank" rel="noopener">' + (/^Affiche/.test(o.credit) ? '' : 'Photo : ') + esc(o.credit) + '</a>' : '')
+      : '<div class="cover-art">' + artSvg(o) + '</div>';
+    return '<div class="cover ' + (o.img ? 'with-photo' : 'with-art') + ' ink-' + (o.ink || 'light') + '" style="--c:' + o.color + '">' +
+      '<div class="cover-head"><h3>' + esc(o.title) + '</h3>' + (o.label ? '<p>' + esc(o.label) + '</p>' : '') + (o.img ? freeBadge(o) : '') + '</div>' + art + (o.img ? '' : freeBadge(o)) + '</div>';
+  }
+  var DETAILS = {}, ddlg;
+  function addDetail(key, fn) { DETAILS[key] = fn; }
+  function openDetail(key) {
+    var fn = DETAILS[key]; if (!fn) return;
+    if (!ddlg) {
+      ddlg = document.getElementById('detail-dialog');
+      ddlg.querySelector('.dlg-close').addEventListener('click', function () { ddlg.close(); });
+      ddlg.addEventListener('click', function (e) { if (e.target === ddlg) ddlg.close(); });
+    }
+    var body = ddlg.querySelector('.detail-body');
+    body.innerHTML = fn();
+    var h = body.querySelector('h3'); ddlg.setAttribute('aria-label', h ? h.textContent : 'Détails');
+    ddlg.showModal(); ddlg.scrollTop = 0;
+  }
+  document.addEventListener('click', function (e) { var t = e.target.closest('.tile[data-detail]'); if (t) openDetail(t.dataset.detail); });
+  /* Couleurs vives des vignettes (comme les vignettes Canva de l'équipe) */
+  var POP = [['#ff7a1a', 'light'], ['#8b5cf6', 'light'], ['#19b8e0', 'light'], ['#ffe94d', 'dark'], ['#f45fb5', 'light'], ['#b8f56a', 'dark'], ['#ef3b3b', 'light'], ['#d99bf0', 'light']];
+  var CAT_POP = { savoyard: 0, burger: 3, pizza: 6, asiat: 2, poisson: 2, street: 0, mexicain: 5, healthy: 5, crepes: 4, indien: 3, oriental: 7, bistrot: 1 };
+  function pop(i) { return POP[i % POP.length]; }
+  function withDetailCover(o, html) { return '<div class="detail-card">' + coverHTML(o) + html + '</div>'; }
+
   /* Photos d'Annecy en tête de chaque rubrique (Wikimedia Commons, licences libres) */
   var BANNERS = {
     crous: { img: 'images/banners/crous.jpg', title: 'Manger au Crous', text: 'Le repas à 1 €, la formule à points et les quatre lieux du campus d’Annecy-le-Vieux.',
@@ -75,10 +114,10 @@
       '<div class="warn"><b>À savoir :</b> avec une carte bancaire classique, tu n’as pas le tarif étudiant. Pour le repas à 1 €, paie toujours avec Izly.</div>' +
       '<h3 class="list-title">Les lieux du Crous sur le campus</h3>';
 
-    var places = D.crous.map(function (p) {
+    function crousCard(p) {
       return '<article class="place' + (p.main ? ' main' : '') + '" id="crous-' + p.id + '">' +
         '<div class="place-head"><div><div class="tags"><span class="tag pine">' + esc(p.kind) + '</span>' + (p.main ? '<span class="tag">Le principal</span>' : '') + '</div>' +
-        '<h4>' + esc(p.name) + '</h4><p class="meta">' + esc(p.address) + '</p></div>' + actions(p, 'crous') + '</div>' +
+        '<h4 class="pname">' + esc(p.name) + '</h4><p class="meta">' + esc(p.address) + '</p></div>' + actions(p, 'crous') + '</div>' +
         '<dl class="facts"><div><dt>Horaires</dt><dd>' + esc(p.hours) + '</dd></div><div><dt>Paiement</dt><dd>' + esc(p.pay) + '</dd></div>' +
         (p.access ? '<div><dt>Accès</dt><dd>' + esc(p.access) + '</dd></div>' : '') +
         (p.phone ? '<div><dt>Téléphone</dt><dd>' + esc(p.phone) + '</dd></div>' : '') + '</dl>' +
@@ -86,8 +125,14 @@
         (p.tip ? '<div class="tip"><b>Astuce</b><p>' + esc(p.tip) + '</p></div>' : '') +
         (p.figure ? '<figure class="big-fig"><img src="' + esc(p.figure.src) + '" alt="' + esc(p.figure.alt) + '" loading="lazy"><figcaption>' + esc(p.figure.caption) + '</figcaption></figure>' : '') +
         '<p class="src-line"><a href="' + esc(p.link) + '" target="_blank" rel="noopener">Page officielle du Crous</a></p>' + '</article>';
+    }
+    var tiles = D.crous.map(function (p, i) {
+      var c = p.main ? ['#c8102e', 'light'] : pop(i + 1);
+      var o = { key: 'crous:' + p.id, title: p.name, label: p.kind, color: c[0], ink: c[1], img: p.main && p.figure ? p.figure.src : '', pos: 'center 40%', icon: /caf/i.test(p.kind) ? 'coffee' : 'bistrot' };
+      addDetail(o.key, function () { return withDetailCover(o, crousCard(p)); });
+      return tileHTML(o);
     }).join('');
-    return general + '<div class="places">' + places + '</div>';
+    return general + '<div class="tiles">' + tiles + '</div>';
   }
 
   /* ---------- 2. RESTAURANTS ---------- */
@@ -110,15 +155,21 @@
           '<button type="button" data-sort="name" aria-pressed="true">A → Z</button><button type="button" data-sort="dist" aria-pressed="false">Plus près du campus</button></div>' +
       '</div>' +
       '<p class="legend-line"><span class="price">€</span> moins de 15 € · <span class="price">€€</span> 15 – 30 € · <span class="price">€€€</span> plus de 30 €</p>' +
-      '<p class="count" id="resto-count" aria-live="polite"></p><div class="grid cards" id="resto-list"></div>';
+      '<p class="count" id="resto-count" aria-live="polite"></p><div class="tiles" id="resto-list"></div>';
   }
   function restoCard(r) {
     return '<article class="place has-sticker">' + sticker(r.cat[0]) +
       '<div class="tags">' + r.cat.map(function (c) { return '<span class="tag pine">' + esc(catLabel(c)) + '</span>'; }).join('') + '</div>' +
-      '<h4>' + esc(r.name) + '</h4><p class="meta">' + esc(r.area) + ' · ' + esc(r.address) + '</p>' +
+      '<h4 class="pname">' + esc(r.name) + '</h4><p class="meta">' + esc(r.area) + ' · ' + esc(r.address) + '</p>' +
       '<p class="price-line">' + euros(r.price) + ' <span>' + esc(r.priceText) + '</span></p>' +
       dishes(r.dishes) + (r.note ? '<p class="note-line">' + esc(r.note) + '</p>' : '') +
       '<div class="place-foot">' + distChip(r) + actions(r, 'resto') + '</div>' + '</article>';
+  }
+  function restoTile(r) {
+    var c = pop(CAT_POP[r.cat[0]] || 0);
+    var o = { key: 'resto:' + r.id, title: r.name, label: catLabel(r.cat[0]) + ' · ' + '€€€'.slice(0, r.price), color: c[0], ink: c[1], icon: r.cat[0] };
+    addDetail(o.key, function () { return withDetailCover(o, restoCard(r)); });
+    return tileHTML(o);
   }
   function renderResto() {
     var items = D.restaurants.filter(function (r) {
@@ -126,21 +177,26 @@
     });
     items.sort(state.sort === 'dist' ? function (a, b) { return km(D.campus, a) - km(D.campus, b); } : function (a, b) { return a.name.localeCompare(b.name, 'fr'); });
     var box = restoRoot.querySelector('#resto-list');
-    box.innerHTML = items.length ? items.map(restoCard).join('') : '<p class="gallery-empty">Aucun restaurant pour ces filtres. Essaie un autre budget.</p>';
+    box.innerHTML = items.length ? items.map(restoTile).join('') : '<p class="gallery-empty">Aucun restaurant pour ces filtres. Essaie un autre budget.</p>';
     restoRoot.querySelector('#resto-count').textContent = items.length === 0 ? 'Aucune adresse' : items.length + (items.length > 1 ? ' adresses' : ' adresse');
   }
 
   /* ---------- 3. COFFEE SHOPS ---------- */
-  function coffeeHTML() {
-    return '<div class="grid cards">' +
-      D.coffee.map(function (c) {
+  function coffeeCard(c) {
         return '<article class="place has-sticker">' + sticker('coffee') + '<div class="tags">' + (c.tags || []).map(function (t) { return '<span class="tag pine">' + esc(t) + '</span>'; }).join('') + '</div>' +
-          '<h4>' + esc(c.name) + '</h4><p class="meta">' + esc(c.area) + ' · ' + esc(c.address) + '</p>' +
+          '<h4 class="pname">' + esc(c.name) + '</h4><p class="meta">' + esc(c.area) + ' · ' + esc(c.address) + '</p>' +
           '<p class="price-line"><span>' + esc(c.priceText) + '</span></p>' +
           (c.hours ? '<p class="hours">' + esc(c.hours) + '</p>' : '') +
           dishes(c.dishes) + (c.note ? '<p class="note-line">' + esc(c.note) + '</p>' : '') +
           '<div class="place-foot">' + distChip(c) + actions(c, 'coffee') + '</div>' + '</article>';
-      }).join('') + '</div>';
+  }
+  function coffeeHTML() {
+    return '<div class="tiles">' + D.coffee.map(function (c, i) {
+      var k = pop(i);
+      var o = { key: 'coffee:' + c.id, title: c.name.split(' – ')[0], label: c.area, color: k[0], ink: k[1], icon: 'coffee' };
+      addDetail(o.key, function () { return withDetailCover(o, coffeeCard(c)); });
+      return tileHTML(o);
+    }).join('') + '</div>';
   }
 
   /* ---------- 4. SUPERMARCHÉS ---------- */
@@ -152,10 +208,16 @@
       : '';
     return '<article class="place shop has-sticker">' + ph + sticker('market') +
       '<div class="tags"><span class="tag pine">' + esc(m.area) + '</span></div>' +
-      '<h4>' + esc(m.name) + '</h4><p class="meta">' + esc(m.address) + '</p>' +
+      '<h4 class="pname">' + esc(m.name) + '</h4><p class="meta">' + esc(m.address) + '</p>' +
       '<p class="price-line">' + euros(m.price) + ' <span>' + ['', 'petits prix', 'prix moyens', 'plus cher'][m.price] + '</span></p>' +
       '<p class="hours">' + esc(m.hours) + '</p><p class="note-line">' + esc(m.info) + '</p>' +
       '<div class="place-foot">' + distChip(m) + actions(m, 'market') + '</div></article>';
+  }
+  function marketTile(m, i) {
+    var k = pop(i + 2);
+    var o = { key: 'market:' + m.id, title: m.name, label: m.area + ' · ' + '€€€'.slice(0, m.price), color: k[0], ink: k[1], icon: 'market' };
+    addDetail(o.key, function () { return withDetailCover(o, marketCard(m)); });
+    return tileHTML(o);
   }
   function marketHTML() {
     var near = D.supermarkets.filter(function (m) { return m.group === 'campus'; });
@@ -165,8 +227,8 @@
         '<div class="card"><h3>Anti-gaspi</h3><p>Avec l’appli Too Good To Go, les magasins et boulangeries vendent leurs invendus du jour en paniers surprise, pour environ un tiers du prix.</p></div>' +
         '<div class="note sky"><b>Le dimanche</b>La plupart des supermarchés ferment vers midi. Fais tes courses le samedi, ou va dans une supérette (Carrefour City, Monoprix).</div>' +
       '</div>' +
-      '<h3 class="list-title">Près du campus (Annecy-le-Vieux)</h3><div class="grid cards">' + near.map(marketCard).join('') + '</div>' +
-      '<h3 class="list-title">En ville</h3><div class="grid cards">' + town.map(marketCard).join('') + '</div>' +
+      '<h3 class="list-title">Près du campus (Annecy-le-Vieux)</h3><div class="tiles">' + near.map(marketTile).join('') + '</div>' +
+      '<h3 class="list-title">En ville</h3><div class="tiles">' + town.map(function (m, i) { return marketTile(m, i + near.length); }).join('') + '</div>' +
       '<figure class="fact"><img src="images/supermarches/carrefour-histoire.jpg" alt="Immeuble Le Parmelan à Annecy, avec un supermarché au rez-de-chaussée" loading="lazy">' +
         '<figcaption><b>Le saviez-vous ?</b> Le tout premier supermarché Carrefour a ouvert en 1960 à Annecy, au rez-de-chaussée de l’immeuble Le Parmelan. Le local accueille aujourd’hui un Casino. ' +
         '<span class="credit">Photo : <a href="https://commons.wikimedia.org/wiki/File:Emplacement_historique_1er_supermarch%C3%A9_Carrefour,_Annecy_(France)_NB.jpg" target="_blank" rel="noopener">Gnrc, CC BY-SA 4.0</a></span></figcaption></figure>';
@@ -243,7 +305,7 @@
 
   /* ---------- montage dans la page ---------- */
   /* Outils partagés avec les autres thèmes (js/activites.js) */
-  window.GUIDE = { openMap: openMap, gmapsUrl: gmapsUrl, km: km, fmtDist: fmtDist, campus: D.campus, esc: esc };
+  window.GUIDE = { openMap: openMap, gmapsUrl: gmapsUrl, km: km, fmtDist: fmtDist, campus: D.campus, esc: esc, tileHTML: tileHTML, addDetail: addDetail };
 
   window.renderManger = function (sections) {
     sections['crous'].innerHTML = bannerHTML('crous') + crousHTML();

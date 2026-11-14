@@ -40,6 +40,13 @@
       '</div></article>';
   }
 
+  /* Vignette (titre + photo, comme les vignettes Canva) ; un clic ouvre la fiche complète */
+  function tile(it) {
+    var c = it.cover || {};
+    window.GUIDE.addDetail('act:' + it.id, function () { return card(it); });
+    return window.GUIDE.tileHTML({ key: 'act:' + it.id, title: it.name, color: c.color || '#2f5d50', ink: c.ink, img: c.img, pos: c.pos, icon: c.icon, free: it.free });
+  }
+
   window.renderActivites = function (bodies) {
     A.sections.forEach(function (s) {
       var body = bodies[s.id];
@@ -49,7 +56,7 @@
       var items = A.items.filter(function (it) { return it.sec === s.id; });
       body.innerHTML = (s.sub ? '<p class="sub">' + esc(s.sub) + '</p>' : '') +
         (s.note ? '<p class="sec-note">' + esc(s.note) + '</p>' : '') +
-        '<div class="act-grid">' + items.map(card).join('') + '</div>';
+        '<div class="tiles">' + items.map(tile).join('') + '</div>';
     });
     if (bodies.conseils) {
       var h = bodies.conseils.parentNode.querySelector(':scope > h2');
