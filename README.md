@@ -42,4 +42,4 @@ Le contenu est dans `data/activites-data.js`. Chaque activité a une couverture 
 
 ## USMB · Vie étudiante et Logement
 
-Le contenu est dans `data/infos-data.js` (une liste de rubriques pour chaque thème). Chaque fiche a un titre, un mot ou chiffre court en grand sur la vignette (`big`), des paragraphes (`paras`), et les sources (`sources`, des paires [texte, lien]). Le code d'affichage est dans `js/infos.js`. Pour ajouter une rubrique, ajoute-la aussi dans `subs` du thème dans `index.html` (même `id`).
+Le contenu est dans `data/infos-data.js`. Chaque rubrique peut avoir : des chiffres clés en grand (`stats`), des étapes numérotées (`steps`), une liste d'infos (`list`), des questions qui s'ouvrent au clic (`faq`, seulement pour ce qui est important : argent, démarches, sécurité) et ses sources (`sources`). Le code d'affichage est dans `js/infos.js`. Pour ajouter une rubrique, ajoute-la aussi dans `subs` du thème dans `index.html` (même `id`).

@@ -1,46 +1,57 @@
 /* Affichage des thèmes « USMB · Vie étudiante » et « Logement » à partir de data/infos-data.js.
-   Même principe que « Idées d'activités » : une vignette par fiche, un clic ouvre la fiche complète. */
+   Tout est visible d'un coup d'œil : chiffres clés, étapes numérotées, listes,
+   et des questions qui s'ouvrent au clic seulement pour ce qui est important. */
 (function () {
   var I = window.INFOS;
   if (!I) return;
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
-  /* Couleurs vives des vignettes, comme ailleurs sur le site */
-  var POP = [['#8b5cf6', 'light'], ['#19b8e0', 'light'], ['#ffe94d', 'dark'], ['#f45fb5', 'light'], ['#b8f56a', 'dark'], ['#ff7a1a', 'light'], ['#ef3b3b', 'light'], ['#d99bf0', 'light']];
-
-  function body(it) {
-    var facts = (it.facts || []).map(function (f) { return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('');
-    var src = (it.sources || []).map(function (s) { return '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>'; }).join(' · ');
-    return '<div class="act-body">' +
-      (it.paras || []).map(function (p) { return '<p class="act-desc">' + esc(p) + '</p>'; }).join('') +
-      (facts ? '<dl class="act-facts">' + facts + '</dl>' : '') +
-      (it.list ? '<ul class="clean">' + it.list.map(function (l) { return '<li>' + esc(l) + '</li>'; }).join('') + '</ul>' : '') +
-      (it.tip ? '<div class="tip"><b>' + esc(it.tipLabel || 'À savoir') + '</b><p>' + esc(it.tip) + '</p></div>' : '') +
-      (src ? '<p class="info-src"><span>Sources :</span> ' + src + '</p>' : '') +
-      '</div>';
+  function stats(s) {
+    return '<div class="g-stats">' + s.map(function (x) {
+      return '<div class="g-stat"><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>';
+    }).join('') + '</div>';
+  }
+  function steps(s) {
+    return '<ol class="g-steps">' + s.map(function (x) {
+      return '<li><b>' + esc(x.t) + '</b><span>' + esc(x.d) + '</span></li>';
+    }).join('') + '</ol>';
+  }
+  function list(s) {
+    return '<ul class="g-list">' + s.map(function (x) {
+      return '<li><b>' + esc(x.t) + '</b><span>' + esc(x.d) + '</span></li>';
+    }).join('') + '</ul>';
+  }
+  function faq(s) {
+    return '<div class="g-faq">' + s.map(function (x) {
+      return '<details><summary>' + esc(x.q) + '</summary><div class="g-ans">' +
+        x.a.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') + '</div></details>';
+    }).join('') + '</div>';
+  }
+  function sources(s) {
+    return '<p class="info-src"><span>Sources :</span> ' + s.map(function (x) {
+      return '<a href="' + esc(x[1]) + '" target="_blank" rel="noopener">' + esc(x[0]) + '</a>';
+    }).join(' · ') + '</p>';
   }
 
-  function render(topic, sections) {
+  function render(sections) {
     return function (bodies) {
-      var G = window.GUIDE;
-      sections.forEach(function (s, si) {
+      sections.forEach(function (s) {
         var el = bodies[s.id];
-        if (!el || !G) return;
+        if (!el) return;
         var h = el.parentNode.querySelector(':scope > h2');
         if (h) h.textContent = s.title;
-        var tiles = s.items.map(function (it, i) {
-          var c = POP[(si * 3 + i) % POP.length];
-          var o = { key: topic + ':' + s.id + ':' + it.id, title: it.title, label: it.label, big: it.big, color: it.color || c[0], ink: it.ink || c[1] };
-          G.addDetail(o.key, function () { return '<article class="act">' + G.coverHTML(o) + body(it) + '</article>'; });
-          return G.tileHTML(o);
-        }).join('');
-        el.innerHTML = (s.sub ? '<p class="sub">' + esc(s.sub) + '</p>' : '') +
+        el.innerHTML = '<div class="guide">' +
+          (s.sub ? '<p class="sub">' + esc(s.sub) + '</p>' : '') +
+          (s.stats ? stats(s.stats) : '') +
+          (s.steps ? steps(s.steps) : '') +
+          (s.list ? list(s.list) : '') +
+          (s.faq ? faq(s.faq) : '') +
           (s.note ? '<p class="sec-note">' + esc(s.note) + '</p>' : '') +
-          '<div class="tiles">' + tiles + '</div>';
+          (s.sources ? sources(s.sources) : '') + '</div>';
       });
     };
   }
 
-  window.renderUsmb = render('usmb', I.usmb);
-  window.renderLogement = render('logement', I.logement);
+  window.renderUsmb = render(I.usmb);
+  window.renderLogement = render(I.logement);
 })();
