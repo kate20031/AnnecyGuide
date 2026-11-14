@@ -74,7 +74,7 @@
   document.addEventListener('click', function (e) { var t = e.target.closest('.tile[data-detail]'); if (t) openDetail(t.dataset.detail); });
   /* Couleurs vives des vignettes (comme les vignettes Canva de l'équipe) */
   var POP = [['#ff7a1a', 'light'], ['#8b5cf6', 'light'], ['#19b8e0', 'light'], ['#ffe94d', 'dark'], ['#f45fb5', 'light'], ['#b8f56a', 'dark'], ['#ef3b3b', 'light'], ['#d99bf0', 'light']];
-  var CAT_POP = { savoyard: 0, burger: 3, pizza: 6, asiat: 2, poisson: 2, street: 0, mexicain: 5, healthy: 5, vegan: 5, crepes: 4, indien: 3, oriental: 7, bistrot: 1 };
+  var CAT_POP = { savoyard: 0, burger: 3, pizza: 6, asiat: 2, poisson: 2, street: 0, mexicain: 5, healthy: 5, crepes: 4, indien: 3, oriental: 7, bistrot: 1 };
   function pop(i) { return POP[i % POP.length]; }
   function withDetailCover(o, html) { return '<div class="detail-card">' + coverHTML(o) + html + '</div>'; }
 

@@ -159,6 +159,3 @@
       '<path d="M37 48c3-4 11-4 14 0" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>') }
   };
 })();
-
-/* Végé & vegan : même illustration que « healthy » (bol de salade) */
-if (window.ICONS && window.ICONS.healthy) window.ICONS.vegan = window.ICONS.healthy;
