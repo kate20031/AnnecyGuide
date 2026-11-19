@@ -10,14 +10,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="data/manger-data.js?v=20261115e"></script>
-<script src="data/photos-data.js?v=20261115e"></script>
-<script src="js/icons.js?v=20261115e"></script>
-<script src="js/manger.js?v=20261115e"></script>
-<script src="data/activites-data.js?v=20261115e"></script>
-<script src="js/activites.js?v=20261115e"></script>
-<script src="data/infos-data.js?v=20261115e"></script>
-<script src="js/infos.js?v=20261115e"></script>
+<script src="data/manger-data.js?v=20261119a"></script>
+<script src="data/photos-data.js?v=20261119a"></script>
+<script src="js/icons.js?v=20261119a"></script>
+<script src="js/manger.js?v=20261119a"></script>
+<script src="data/activites-data.js?v=20261119a"></script>
+<script src="js/activites.js?v=20261119a"></script>
+<script src="data/infos-data.js?v=20261119a"></script>
+<script src="js/infos.js?v=20261119a"></script>
 <style>
 /* Layout: sticky chip nav, one topic visible at a time (hash routing), subtopic chips that jump to sections.
    Thème sombre gris-violet avec halos lumineux (un seul thème, choisi). */
@@ -286,6 +286,39 @@ ul.clean li::before{content:"";position:absolute;left:2px;top:.68em;width:7px;he
 .g-steps{list-style:none;counter-reset:st;padding:0;margin:0;display:grid;gap:10px}
 .g-steps li{counter-increment:st;position:relative;padding:12px 14px 12px 60px;background:var(--card-2);border:1px solid var(--line);border-radius:12px}
 .g-steps li::before{content:counter(st);position:absolute;left:14px;top:12px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:800 15px var(--f-head);color:#fff;background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 0 14px rgba(139,92,246,.5)}
+.g-h{font:800 19px var(--f-head);color:#fff;margin:6px 0 2px}
+.g-p{margin:0;font-size:15.5px;color:#d6d0e6}
+.g-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.g-links a{font:700 13.5px var(--f-head);color:#e9e3ff;text-decoration:none;border:1px solid var(--edge-hi);background:rgba(139,92,246,.14);border-radius:999px;padding:6px 12px;display:inline-flex;align-items:center;gap:6px}
+.g-links a:hover{background:rgba(139,92,246,.32);color:#fff}
+.g-links .ti{font-size:14px;opacity:.8}
+.g-cards,.g-parts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g-card,.g-part,.g-box{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.g-card p,.g-part p{margin:8px 0 0;font-size:15px;color:#d6d0e6}
+.g-card-h{display:flex;align-items:center;gap:12px}
+.g-card-h b{font:700 17px var(--f-head);color:#fff}
+.g-part ul.clean{margin:10px 0 0;font-size:15px;color:#d6d0e6}
+.g-remember{border-top:1px solid var(--line);padding-top:10px}
+.g-remember b{color:var(--violet-2)}
+.g-box .g-h{margin-top:0}
+.g-box ul.clean{margin:6px 0 0;font-size:15px;color:#d6d0e6}
+.g-after{margin:10px 0 0;font-size:14px;color:var(--soft)}
+.warn-box{border-color:rgba(251,113,133,.45);background:rgba(251,113,133,.07)}
+.warn-box .g-h{color:#fecdd3}
+.g-steps li .g-links{margin-top:8px}
+.g-dos{list-style:none;padding:0;margin:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g-dos li{display:flex;gap:12px;align-items:flex-start;background:var(--card-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.g-dos b{display:block;font:700 16px var(--f-head);color:#fff;margin:4px 0 3px}
+.g-dos span:not(.g-badge){font-size:15px;color:#d6d0e6}
+.g-badge{display:inline-block;font:800 11.5px var(--f-head);text-transform:uppercase;letter-spacing:.05em;border-radius:999px;padding:2px 9px}
+.g-dos .do .g-badge{background:rgba(52,211,153,.16);color:#a7f3d0;border:1px solid rgba(52,211,153,.4)}
+.g-dos .dont .g-badge{background:rgba(251,113,133,.14);color:#fecdd3;border:1px solid rgba(251,113,133,.4)}
+.g-dos .dont .g-ic{background:linear-gradient(135deg,rgba(251,113,133,.42),rgba(190,18,60,.28));border-color:rgba(251,113,133,.5)}
+.g-check{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.g-check li{display:flex;gap:12px;align-items:flex-start;background:var(--card-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.g-check input{width:20px;height:20px;margin:2px 0 0;accent-color:#8b5cf6;flex:none;cursor:pointer}
+.g-check label{font-size:15.5px;color:#e9e3ff;cursor:pointer}
+.g-check input:checked + label{color:var(--soft);text-decoration:line-through}
 .g-faq{display:grid;gap:8px}
 .g-faq details{background:var(--card-2);border:1px solid var(--line);border-radius:12px}
 .g-faq details[open]{border-color:var(--edge-hi)}
@@ -501,8 +534,8 @@ footer{border-top:1px solid var(--line)}
 <script>
 /* ====== EDIT HERE: topics and subtopics of the guide ====== */
 var TOPICS = [
-  { id:"usmb", title:"USMB · Vie étudiante", hl:"La vie étudiante", desc:"Les études, le budget, l’intégration et les codes de la vie en France et en Savoie.",
-    subs:[ {id:"etudes", t:"Études"}, {id:"budget", t:"Budget et aides"}, {id:"integration", t:"Trouver sa place"}, {id:"savoirvivre", t:"Savoir-vivre"}, {id:"savoie", t:"Culture savoyarde"}, {id:"deplacer", t:"Bouger moins cher"}, {id:"securite", t:"Montagne et lac"} ],
+  { id:"usmb", title:"USMB · Vie étudiante", hl:"La vie étudiante", desc:"Les études, le budget, la vie en France et en Savoie, et nos conseils pour ta première année.",
+    subs:[ {id:"etudes", t:"Études"}, {id:"budget", t:"Budget et aides"}, {id:"integration", t:"Trouver sa place"}, {id:"savoirvivre", t:"À faire et à éviter"}, {id:"premiere", t:"Première année"}, {id:"deplacer", t:"Bouger moins cher"}, {id:"securite", t:"Montagne et lac"} ],
     custom:"renderUsmb" },
   { id:"transports", title:"Transports", hl:"Se déplacer", desc:"Bus, train et tarifs.",
     subs:["Bus","Train","Tarifs"] },
@@ -514,8 +547,8 @@ var TOPICS = [
   { id:"activites", title:"Idées d’activités", hl:"Idées d’activités", desc:"Festivals, cinémas, sport, châteaux et spectacles, avec les prix et la distance du campus.",
     subs:[ {id:"festivals", t:"Festivals"}, {id:"cinemas", t:"Cinémas"}, {id:"sport", t:"Sport et plein air"}, {id:"table", t:"Une table avec vue"}, {id:"chateaux", t:"Châteaux"}, {id:"spectacles", t:"Spectacles et expos"}, {id:"conseils", t:"Nos conseils"} ],
     custom:"renderActivites" },
-  { id:"logement", title:"Logement", hl:"Se loger", desc:"Le budget, les aides et nos conseils pour bien vivre seul à Annecy.",
-    subs:[ {id:"etapes", t:"Étape par étape"}, {id:"questions", t:"Questions importantes"}, {id:"seul", t:"Vivre seul"}, {id:"ici", t:"Vivre à Annecy"} ],
+  { id:"logement", title:"Logement", hl:"Se loger", desc:"Trouver un logement à Annecy en quatre étapes : chercher, la garantie, les assurances et l’aide de la CAF.",
+    subs:[ {id:"avant", t:"Avant de commencer"}, {id:"etape1", t:"1. Trouver"}, {id:"etape2", t:"2. Garantie"}, {id:"etape3", t:"3. Assurances"}, {id:"etape4", t:"4. CAF"}, {id:"checklist", t:"Liste à cocher"} ],
     custom:"renderLogement" }
 ];
 /* ========================================================== */
